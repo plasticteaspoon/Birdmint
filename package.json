@@ -1,0 +1,22 @@
+{
+  "name": "birdmint",
+  "version": "1.0.0",
+  "description": "My super cool, world wide website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plasticteaspoon/Birdmint.git"
+  },
+  "author": "Jessica Drury",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/plasticteaspoon/Birdmint/issues"
+  },
+  "homepage": "https://github.com/plasticteaspoon/Birdmint#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
