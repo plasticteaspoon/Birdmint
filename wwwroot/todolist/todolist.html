@@ -41,11 +41,14 @@
 
                 scope.addTask = function () {
                     window.location.href = '/todolist/addTask.html';
-                }
+                };
                 scope.deleteTask = function (_id) {
                     Task.remove({id : _id}, null, function () {
                         window.location.href = '/todolist/todolist.html';
                     });
+                };
+                scope.goHome = function () {
+                    window.location.href = '/home.html';
                 }
 
             }]);
@@ -78,7 +81,9 @@
                     <td><button type="button" class="btn btn-primary" ng-click="deleteTask(task._id)">Delete</button></td>
                 </tr>
             </tbody>
-        </table>        
+        </table>
+
+        <div><button type="button" class="btn btn-primary" ng-click="goHome()">Back to Birdmint</button></div>
 
     </body>
 </html>
