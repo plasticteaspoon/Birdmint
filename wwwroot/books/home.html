@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- favicon -->
+        <link rel="icon" type="image/png" href="/birdmint-favicon.png"/>
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.min.js"></script>
+
+        <script>
+            'use strict';
+            angular.module('bookApp', ['ngResource', 'ui.bootstrap'])
+            
+            .factory('Book', ['$resource', function (resource) {
+                return resource('/api/book/:id');
+            }])
+            
+            .controller('bookController', ['$scope', '$window', 'Book', function (scope, window, Book) {
+
+                scope.dangerMessage = '';
+                scope.successMessage = '';
+
+                scope.bookList = Book.query();
+                scope.book = new Book();
+
+                var clearMessages = function () {
+                    scope.dangerMessage = '';
+                    scope.successMessage = '';
+                };
+
+                scope.addBook = function () {
+                    window.location.href = '/books/addBook.html';
+                }
+                scope.deleteBook = function (_id) {
+                    Book.remove({id : _id}, null, function () {
+                        window.location.href = '/books/home.html';
+                    });
+                }
+
+            }]);
+        </script>
+
+    </head>
+
+    <body class="container" ng-app="bookApp" ng-controller="bookController">
+        <div class="jumbotron">
+            <h1>Welcome to the Book Bank</h1>
+        </div>
+
+        <div class="alert alert-danger" ng-show="dangerMessage">{{dangerMessage}}</div>
+        <div class="alert alert-success" ng-show="successMessage">{{successMessage}}</div>
+
+        <button type="button" class="btn btn-primary" ng-click="addBook()">Add a book</button>
+
+        <h2>Here are your books</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="book in bookList | orderBy : 'dateAdded'">
+                    <td>{{book.title}}</td>
+                    <td>{{book.author}}</td>
+                    <td><button type="button" class="btn btn-primary" ng-click="deleteBook(book._id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>        
+
+    </body>
+</html>

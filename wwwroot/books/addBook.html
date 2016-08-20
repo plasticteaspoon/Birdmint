@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- favicon -->
+        <link rel="icon" type="image/png" href="/birdmint-favicon.png"/>
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.min.js"></script>
+
+        <script>
+            'use strict';
+            angular.module('bookApp', ['ngResource', 'ui.bootstrap'])
+            
+            .factory('Book', ['$resource', function (resource) {
+                return resource('/api/book/:id');
+            }])
+            
+            .controller('bookController', ['$scope', '$http', '$window', 'Book', function (scope, http, window,  Book) {
+
+                scope.dangerMessage = '';
+                scope.successMessage = '';
+
+                scope.book = new Book();
+
+                var clearMessages = function () {
+                    scope.dangerMessage = '';
+                    scope.successMessage = '';
+                };
+
+                scope.isbn = '';
+                scope.findIsbn = function () {
+                    //console.log('button clicked');
+                    http.get('/isbnSearch?isbn=' + scope.isbn)
+                        .then(function (response) {
+                            var bookData = response.data.data[0];
+                            if(bookData) {
+                                scope.book.title = bookData.title;
+                                if(bookData.author_data[0]) {
+                                    scope.book.author = bookData.author_data[0].name;
+                                }
+                            } else {
+                                scope.dangerMessage = 'Sorry, but we cannot find this book. Please enter the details manually.';
+                            }
+                            
+                        },
+                        function () {
+                            scope.dangerMessage = 'Oops! Sorry, something went wrong. Please try again later.';
+                        });
+                };
+
+                scope.addBook = function () {
+                    scope.book.$save([], 
+                    function () {
+                        window.location.href = '/books/home.html';
+                    },
+                    function () {
+                        scope.dangerMessage = 'Oops! Sorry, we failed to save the book. Please try again later';
+                    });                    
+                }
+
+                scope.cancel = function () {
+                    window.location.href = '/books/home.html';
+                }
+            }]);
+        </script>
+
+    </head>
+
+    <body class="container" ng-app="bookApp" ng-controller="bookController">
+        <div class="jumbotron">
+            <h1>The Birdmint Book Club</h1>
+        </div>
+
+        <div class="alert alert-danger" ng-show="dangerMessage">{{dangerMessage}}</div>
+        <div class="alert alert-success" ng-show="successMessage">{{successMessage}}</div>
+
+        <h2>Add a book!!!</h2>
+        <form class="form" ng-submit="addBook()">
+            <div class="form-group">
+                <label>ISBN no.</label>
+                <div class="input-group">                    
+                    <input type="text" class="form-control" ng-model="isbn" />
+                    <span class="input-group-btn">                                                                
+                        <button type="button" class="btn btn-primary" ng-click="findIsbn()">Search</button>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" ng-model="book.title" />                
+            </div>
+            <div class="form-group">
+                <label>Author</label>
+                <input type="text" class="form-control" ng-model="book.author" />                
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Go</button>
+                <button type="button" class="btn btn-primary" ng-click="cancel()">Cancel</button>
+            </div>
+        </form>
+
+    </body>
+</html>
