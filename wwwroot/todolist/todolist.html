@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- favicon -->
+        <link rel="icon" type="image/png" href="/birdmint-favicon.png"/>
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.min.js"></script>
+
+        <script>
+            'use strict';
+            angular.module('taskApp', ['ngResource', 'ui.bootstrap'])
+            
+            .factory('Task', ['$resource', function (resource) {
+                return resource('/api/task/:id');
+            }])
+            
+            .controller('taskListController', ['$scope', '$window', 'Task', function (scope, window, Task) {
+
+                scope.dangerMessage = '';
+                scope.successMessage = '';
+
+                scope.tasks = Task.query();
+                scope.task = new Task();
+
+                var clearMessages = function () {
+                    scope.dangerMessage = '';
+                    scope.successMessage = '';
+                };
+
+                scope.addTask = function () {
+                    window.location.href = '/todolist/addTask.html';
+                }
+                scope.deleteTask = function (_id) {
+                    Task.remove({id : _id}, null, function () {
+                        window.location.href = '/todolist/todolist.html';
+                    });
+                }
+
+            }]);
+        </script>
+
+    </head>
+
+    <body class="container" ng-app="taskApp" ng-controller="taskListController">
+        <div class="jumbotron">
+            <h1>Things to be done</h1>
+        </div>
+
+        <div class="alert alert-danger" ng-show="dangerMessage">{{dangerMessage}}</div>
+        <div class="alert alert-success" ng-show="successMessage">{{successMessage}}</div>
+
+        <button type="button" class="btn btn-primary" ng-click="addTask()">Add a task</button>
+
+        <h2>Things to be done</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Task</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="task in tasks | orderBy : 'dateAdded'">
+                    <td>{{task.category}}</td>
+                    <td>{{task.title}}</td>
+                    <td><button type="button" class="btn btn-primary" ng-click="deleteTask(task._id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>        
+
+    </body>
+</html>

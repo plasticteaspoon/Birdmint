@@ -1,5 +1,6 @@
 var express = require('express');
 var books = require('./books/books.js');
+var tasks = require('./todolist/todolist.js');
 
 console.log(books.banana);
 
@@ -8,7 +9,8 @@ var app = express();
 app.use(express.static(__dirname + '/wwwroot'));
 
 books.addRoutes(app);
+tasks.addRoutes(app);
 
-app.listen(80, function () {
+app.listen(8080, function () {
     console.log('Server started');
 });
