@@ -64,8 +64,13 @@
                     function () {
                         window.location.href = '/books/books-home.html';
                     },
-                    function () {
-                        scope.dangerMessage = 'Oops! Sorry, we failed to save the book. Please try again later';
+                    function (err) {
+                        console.log('The err is ' + err.status);
+                        if (err.status == 401) {
+                            window.location.href = '/login.html';
+                        } else {
+                            scope.dangerMessage = 'Oops! Sorry, we failed to save the book. Please try again later';
+                        }
                     });                    
                 }
 

@@ -27,6 +27,7 @@ exports.addRoutes = function (app) {
 
     //get all the books
     app.get("/api/book", function (request, response) {
+        console.log("Here's a message from session " + request.session.hi);
         db.find({}, function (err, books) {
             response.setHeader('ContentType', 'application/json');
             response.send(books);
@@ -41,25 +42,40 @@ exports.addRoutes = function (app) {
 
     //add a book
     app.post("/api/book", function (request, response) {
-        //console.log(request.body);
-        request.body.dateAdded = new Date();
-        db.insert(request.body);
-        response.setHeader('ContentType', 'application/json');
-        response.send({});
+        if (request.session.authenticated) {
+            //console.log(request.body);
+            request.body.dateAdded = new Date();
+            db.insert(request.body);
+            response.setHeader('ContentType', 'application/json');
+            response.send({});
+        } else {
+            response.status(401);
+            response.send();
+        }
     });
 
     //edits a book
     app.post("/api/book/:id", function (request, response) {
-        response.setHeader('ContentType', 'application/json');
-        response.send({});
+        if (request.session.authenticated) {
+            response.setHeader('ContentType', 'application/json');
+            response.send({});
+        } else {
+            response.status(401);
+            response.send();
+        }
     });
 
     //delete a book
     app.delete("/api/book/:id", function (request, response) {
-        console.log('id = ' + request.params.id);
-        db.remove({_id : request.params.id});
-        response.setHeader('ContentType', 'application/json');
-        response.send();
+        if (request.session.authenticated) {
+            console.log('id = ' + request.params.id);
+            db.remove({_id : request.params.id});
+            response.setHeader('ContentType', 'application/json');
+            response.send();
+        } else {
+            response.status(401);
+            response.send();
+        }
     });    
 }
 
