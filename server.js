@@ -1,6 +1,7 @@
 var express = require('express');
 var books = require('./books/books.js');
 var tasks = require('./todolist/todolist.js');
+var config = require('config');
 
 console.log(books.banana);
 
@@ -15,6 +16,8 @@ app.get('/', function (request, response) {
 books.addRoutes(app);
 tasks.addRoutes(app);
 
-app.listen(80, function () {
-    console.log('Server started');
+var serverPort =config.get("serverPort"); 
+
+app.listen(serverPort, function () {
+    console.log('Server started on port ' + serverPort);
 });
