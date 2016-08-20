@@ -3,3 +3,4 @@ node_modules
 license-to-read
 todolist/tasks.nedb
 books/books.nedb
+*/Thumbs.db

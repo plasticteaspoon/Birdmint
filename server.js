@@ -15,6 +15,6 @@ app.get('/', function (request, response) {
 books.addRoutes(app);
 tasks.addRoutes(app);
 
-app.listen(8080, function () {
+app.listen(80, function () {
     console.log('Server started');
 });
