@@ -62,7 +62,7 @@
                 scope.addBook = function () {
                     scope.book.$save([], 
                     function () {
-                        window.location.href = '/books/home.html';
+                        window.location.href = '/books/books-home.html';
                     },
                     function () {
                         scope.dangerMessage = 'Oops! Sorry, we failed to save the book. Please try again later';
@@ -70,7 +70,7 @@
                 }
 
                 scope.cancel = function () {
-                    window.location.href = '/books/home.html';
+                    window.location.href = '/books/books-home.html';
                 }
             }]);
         </script>
