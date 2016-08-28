@@ -4,10 +4,12 @@ var tasks = require('./todolist/todolist.js');
 var config = require('config');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var Database = require('nedb');
 
 console.log(books.banana);
 
 var app = express();
+var db = new Database({ filename: __dirname + '/login.nedb', autoload: true });
 
 app.use(express.static(__dirname + '/wwwroot'));
 app.use(session({'secret':'1234', 'resave':false, 'saveUninitialized':true}));
@@ -18,13 +20,16 @@ app.get('/', function (request, response) {
 });
 
 app.post('/api/login', function (request, response) {
-    if(request.body.password == 'pingpong') {
-        request.session.authenticated = true;        
-        response.send();
-    } else {
+    db.find({username: request.body.username, password: request.body.password}, function (err, users) {
+        if(users.length != 0) {
+            request.session.authenticated = true;
+            response.send();
+        } else {
             response.status(401);
             response.send();
-    }
+        }
+    });
+
 });
 
 books.addRoutes(app);

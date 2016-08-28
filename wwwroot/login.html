@@ -37,6 +37,7 @@
                         method: 'POST',
                         url: '/api/login',
                         data: {
+                            username: scope.username,
                             password: scope.password
                         }
                     }).then(
@@ -65,10 +66,14 @@
         <div class="alert alert-danger" ng-show="dangerMessage">{{dangerMessage}}</div>
         <div class="alert alert-success" ng-show="successMessage">{{successMessage}}</div>
 
-        <form class="form" ng-submit="login()">            
+        <form class="form" ng-submit="login()">  
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" ng-model="username"/>
+            </div>          
             <div class="form-group">
                 <label>Password</label>
-                <input type="text" class="form-control" ng-model="password"/>                
+                <input type="password" class="form-control" ng-model="password"/>                
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Login</button>
