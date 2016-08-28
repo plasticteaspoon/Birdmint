@@ -70,13 +70,15 @@
                     <th>Title</th>
                     <th>Author</th>
                     <th>Owner</th>
+                    <th>Comment</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="book in bookList | orderBy : '-dateAdded'">
-                    <td>{{book.title}}</td>
-                    <td>{{book.author}}</td>
-                    <td>{{book.owner}}</td>
+                    <td width="15%">{{book.title}}</td>
+                    <td width="15%">{{book.author}}</td>
+                    <td width="15%">{{book.owner}}</td>
+                    <td width="60%">{{book.comment}}</td>
                     <td><button type="button" class="btn btn-primary" ng-click="deleteBook(book._id)">Delete</button></td>
                 </tr>
             </tbody>
