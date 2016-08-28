@@ -69,12 +69,14 @@
                 <tr>
                     <th>Title</th>
                     <th>Author</th>
+                    <th>Owner</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="book in bookList | orderBy : '-dateAdded'">
                     <td>{{book.title}}</td>
                     <td>{{book.author}}</td>
+                    <td>{{book.owner}}</td>
                     <td><button type="button" class="btn btn-primary" ng-click="deleteBook(book._id)">Delete</button></td>
                 </tr>
             </tbody>

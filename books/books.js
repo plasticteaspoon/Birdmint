@@ -45,6 +45,7 @@ exports.addRoutes = function (app) {
         if (request.session.authenticated) {
             //console.log(request.body);
             request.body.dateAdded = new Date();
+            request.body.owner = request.session.user.username;
             db.insert(request.body);
             response.setHeader('ContentType', 'application/json');
             response.send({});

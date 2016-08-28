@@ -23,8 +23,11 @@ app.post('/api/login', function (request, response) {
     db.find({username: request.body.username, password: request.body.password}, function (err, users) {
         if(users.length != 0) {
             request.session.authenticated = true;
+            request.session.user = users[0];
             response.send();
         } else {
+            request.session.authenticated = false;
+            request.session.user = null;
             response.status(401);
             response.send();
         }
