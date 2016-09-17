@@ -7,7 +7,7 @@
         <link rel="icon" type="image/png" href="/birdmint-favicon.png"/>
 
         <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>>
 
         <!-- Latest compiled JavaScript -->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -20,6 +20,7 @@
 
         <script>
             'use strict';
+
             angular.module('bookApp', ['ngResource', 'ui.bootstrap'])
             
             .factory('Book', ['$resource', function (resource) {
@@ -58,6 +59,10 @@
                             scope.dangerMessage = 'Oops! Sorry, something went wrong. Please try again later.';
                         });
                 };
+
+                scope.ratingStates = [
+                    {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'}
+                ];
 
                 scope.addBook = function () {
                     scope.book.$save([], 
@@ -109,6 +114,10 @@
             <div class="form-group">
                 <label>Author</label>
                 <input type="text" class="form-control" ng-model="book.author" />                
+            </div>
+            <div class="form-group">
+                <label>Rating</label>
+                <span uib-rating ng-model="book.rating" max="5"></span>
             </div>
             <div class="form-group">
                 <label>Comment</label>
