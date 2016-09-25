@@ -50,6 +50,21 @@
         <div ng-show="gameState != 'playing'">
             <div class="peg" ng-repeat="peg in board.solutions" ng-style="{'background-color': peg.color}"></div>
         </div>
+        
+        <div>
+            <div class="peg" 
+                 ui-draggable="true" 
+                 drag="c" 
+                 ng-repeat="c in pegColors track by $index" 
+                 ng-style="{'background-color': c, 'border-width': getBorderWidth(c)}"
+                 ng-click="colorClicked(c)">
+            </div>
+        </div>
+
+        <!--<div>
+            <h3>Current colour - </h3>
+            <div class="peg" ng-style="{'background-color': currentColour}"></div>
+        </div>-->
 
         <table class="table">
             <thead>
@@ -72,19 +87,14 @@
                             drop-validate="dropValidate(r)"
                             ui-draggable="true"
                             drag="peg.color" 
-                            ng-style="{'background-color': peg.color}"></div>
+                            ng-style="{'background-color': peg.color}"
+                            ng-click="pegClick(peg, r.active)"></div>
                     </td>
                     <td><button class="btn btn-xs btn-default checkButton"" ng-show="r.active" ng-disabled="unusedPegCount(r) != 0" ng-click="check($index)">check</button></td>
                 </tr>
             </tbody>
         </table>
 
-        <div>
-            <div class="peg" ui-draggable="true" drag="c" ng-repeat="c in pegColors track by $index" ng-style="{'background-color': c}"></div>
-        </div>
-
-    </div>
- 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

@@ -3,6 +3,8 @@ var mastermindApp = angular.module("mastermindApp", ["ang-drag-drop"]);
 mastermindApp.controller("mastermindController", ["$scope", function (scope) {
     var i, j, row;
 
+    scope.currentColour = "grey";
+
     scope.gameState = "playing"; //"playing", "won", "lost"
 
     scope.board = {
@@ -139,6 +141,23 @@ mastermindApp.controller("mastermindController", ["$scope", function (scope) {
             if (scope.gameState != "won") {
                 scope.gameState = "lost";
             }
+        }
+    };
+    scope.colorClicked = function (colour) {
+        scope.currentColour = colour;
+    };
+
+    scope.pegClick = function (peg, active) {
+        if (active) {
+            peg.color = scope.currentColour;
+        }
+    }
+
+    scope.getBorderWidth = function (colour) {
+        if (colour == scope.currentColour) {
+            return '4px';
+        } else {
+            return '1px';
         }
     };
 }]);
