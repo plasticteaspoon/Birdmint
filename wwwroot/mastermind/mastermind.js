@@ -150,6 +150,7 @@ mastermindApp.controller("mastermindController", ["$scope", function (scope) {
     scope.pegClick = function (peg, active) {
         if (active) {
             peg.color = scope.currentColour;
+            scope.currentColour = 'grey';
         } else {
             scope.currentColour = peg.color;
         }
