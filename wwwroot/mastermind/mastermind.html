@@ -31,6 +31,13 @@
         .peg {
             float:left;
         }
+        
+        .selected {
+            'background-color': c; 
+            'border-width': 4px;
+            height: 25px;
+            width:25px;
+        }
 
     </style>
 </head>
@@ -53,10 +60,11 @@
         
         <div>
             <div class="peg" 
+                 ng-class="{selected: selected(c)}" 
                  ui-draggable="true" 
-                 drag="c" 
-                 ng-repeat="c in pegColors track by $index" 
-                 ng-style="{'background-color': c, 'border-width': getBorderWidth(c)}"
+                 drag="c"
+                 ng-style="{'background-color': c}"
+                 ng-repeat="c in pegColors track by $index"
                  ng-click="colorClicked(c)">
             </div>
         </div>

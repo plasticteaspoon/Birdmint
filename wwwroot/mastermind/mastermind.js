@@ -150,14 +150,16 @@ mastermindApp.controller("mastermindController", ["$scope", function (scope) {
     scope.pegClick = function (peg, active) {
         if (active) {
             peg.color = scope.currentColour;
-        }
-    }
-
-    scope.getBorderWidth = function (colour) {
-        if (colour == scope.currentColour) {
-            return '4px';
         } else {
-            return '1px';
+            scope.currentColour = peg.color;
+        }
+    };
+
+    scope.selected = function (color) {
+        if (color == scope.currentColour) {
+            return true;
+        } else {
+            return false;
         }
     };
 }]);
