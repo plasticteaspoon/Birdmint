@@ -55,9 +55,12 @@
         <div ng-show="gameState == 'lost'">You Lost!</div>
 
         <div ng-show="gameState != 'playing'">
+            <h3>Solution -</h3>
             <div class="peg" ng-repeat="peg in board.solutions" ng-style="{'background-color': peg.color}"></div>
         </div>
         
+        
+
         <div>
             <div class="peg" 
                  ng-class="{selected: selected(c)}" 
@@ -77,18 +80,14 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th colspan="4">Progress</th>
-                    <th></th>
                     <th colspan="4">Guesses</th>
                     <th></th>
+                    <th colspan="4">Progress</th>
+                    <th></th>                    
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="r in board.rows">
-                    <td ng-repeat="peg in r.indicators">
-                        <div class="indicator" ng-style="{'background-color': peg.color}"></div>
-                    </td>
-                    <td><div class="separator"></div></td>
                     <td ng-repeat="peg in r.guessPegs">
                         <div class="guess" 
                             ui-on-drop="onDrop(peg, $data)" 
@@ -99,6 +98,10 @@
                             ng-click="pegClick(peg, r.active)"></div>
                     </td>
                     <td><button class="btn btn-xs btn-default checkButton"" ng-show="r.active" ng-disabled="unusedPegCount(r) != 0" ng-click="check($index)">check</button></td>
+                    <td ng-repeat="peg in r.indicators">
+                        <div class="indicator" ng-style="{'background-color': peg.color}"></div>
+                    </td>
+                    <td><div class="separator"></div></td>                    
                 </tr>
             </tbody>
         </table>
