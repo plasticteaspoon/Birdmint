@@ -108,28 +108,28 @@ mastermindApp.controller("mastermindController", ["$scope", function (scope) {
         });
 
         //count the number of successes
-        var redCount = 0;
+        var blackCount = 0;
         var whiteCount = 0;
 
         row.guessPegs.forEach(function(peg) {
             if (peg.result === "color-and-position") {
-                redCount++;
+                blackCount++;
             }
             if (peg.result === "color-only") {
                 whiteCount++;
             }
         });
 
-        if (redCount === scope.board.numPegs) {
+        if (blackCount === scope.board.numPegs) {
             scope.gameState = "won";
         }
 
         //finally set the indicators
         var index = 0;
 
-        while (redCount > 0) {
-            row.indicators[index].color = "red";
-            redCount--;
+        while (blackCount > 0) {
+            row.indicators[index].color = "black";
+            blackCount--;
             index++;
         }
 
