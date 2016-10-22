@@ -51,26 +51,28 @@
     <div class="container" ng-controller="mastermindController">
         <h1>Mastermind - {{gameState}}</h1>
 
-        <div ng-show="gameState == 'won'">You Won!</div>
-        <div ng-show="gameState == 'lost'">You Lost!</div>
+        <h2 ng-show="gameState == 'won'">You Won!</h2>
+        <h2 ng-show="gameState == 'lost'">You Lost!</h2>
+        <h2 ng-show="gameState == 'cheated'">You Cheated!</h2>
 
         <div ng-show="gameState != 'playing'">
-            <h3>Solution -</h3>
+            <h3>Solution - </h3>
             <div class="peg" ng-repeat="peg in board.solutions" ng-style="{'background-color': peg.color}"></div>
         </div>
-        
-        
 
-        <div>
-            <div class="peg" 
-                 ng-class="{selected: selected(c)}" 
-                 ui-draggable="true" 
-                 drag="c"
-                 ng-style="{'background-color': c}"
-                 ng-repeat="c in pegColors track by $index"
-                 ng-click="colorClicked(c)">
-            </div>
+        <br/>
+
+        <h3>Colours - </h3>
+        <div class="peg" 
+            ng-class="{selected: selected(c)}" 
+            ui-draggable="true" 
+            drag="c"
+            ng-style="{'background-color': c}"
+            ng-repeat="c in pegColors track by $index"
+            ng-click="colorClicked(c)">
         </div>
+
+        <button class="btn btn-default" ng-click="cheat()">Cheat</button>
 
         <!--<div>
             <h3>Current colour - </h3>
@@ -97,11 +99,11 @@
                             ng-style="{'background-color': peg.color}"
                             ng-click="pegClick(peg, r.active)"></div>
                     </td>
-                    <td><button class="btn btn-xs btn-default checkButton"" ng-show="r.active" ng-disabled="unusedPegCount(r) != 0" ng-click="check($index)">check</button></td>
+                    <td><button class="btn btn-xs btn-default checkButton" ng-show="r.active" ng-disabled="unusedPegCount(r) != 0" ng-click="check($index)">check</button></td>
                     <td ng-repeat="peg in r.indicators">
                         <div class="indicator" ng-style="{'background-color': peg.color}"></div>
                     </td>
-                    <td><div class="separator"></div></td>                    
+                                       
                 </tr>
             </tbody>
         </table>

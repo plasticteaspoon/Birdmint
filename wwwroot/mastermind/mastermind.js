@@ -5,7 +5,9 @@ mastermindApp.controller("mastermindController", ["$scope", function (scope) {
 
     scope.currentColour = "grey";
 
-    scope.gameState = "playing"; //"playing", "won", "lost"
+    scope.gameState = "playing";    //"playing", "won", "lost"
+
+    scope.cheated = false;
 
     scope.board = {
         numRows: 10,
@@ -65,6 +67,10 @@ mastermindApp.controller("mastermindController", ["$scope", function (scope) {
         });
         return count;
     };
+
+    scope.cheat = function () {
+        scope.gameState = "cheated";
+    };
     
     scope.check = function (rowIndex) {
         var i;
@@ -75,7 +81,7 @@ mastermindApp.controller("mastermindController", ["$scope", function (scope) {
             //peg.used = false;
             peg.result = "none";  //"none", "color-only", "color-and-position"
         });
-        //first reset all thesolution pegs to be unused
+        //first reset all the solution pegs to be unused
         scope.board.solutions.forEach(function(solution) {
             solution.used = false;
         });
