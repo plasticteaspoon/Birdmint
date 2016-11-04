@@ -2,6 +2,7 @@ node_modules
 .vscode/
 license-to-read
 todolist/tasks.nedb
+wwwroot/books/books.nedb
 books/books.nedb
 */Thumbs.db
 TEMP
