@@ -1,0 +1,39 @@
+.warning {
+    color: orange;
+}
+.success {
+    color: green;
+}
+.error {
+    color: red;
+}
+
+.myAdventCell img {
+    border: solid 10px black;
+}
+
+.jumbotron {
+    background-image: url('pictures/totoro.jpg');
+    background-size: contain;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.fullHeightImg {
+    height: 100%;
+}
+p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+}
+.display-table {
+    display: table;
+    table-layout: fixed;
+}
+.display-cell {
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+}
+.verse p{
+    white-space: nowrap;
+}

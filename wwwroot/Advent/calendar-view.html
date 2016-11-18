@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="jumbotron">
+            <h1 class="text-center">Advent Calendar</h1>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+<div class="row" ng-repeat="row in calendar.rows">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2 myAdventCell" ng-repeat="col in row.cols">
+        <img ng-src="{{col.coverImgUrl}}" class="img-responsive" ng-show="col.open == false" ng-click="openDoor(col)"/>
+        <img ng-src="{{col.imgUrl}}" class="img-responsive" ng-show="col.open == true" ng-click="dayPage(col)"/>
+        <h1>{{col.number}}</h1>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
