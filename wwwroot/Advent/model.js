@@ -1,4 +1,4 @@
-var adventApp = angular.module("adventApp", ["ngRoute"]);
+var adventApp = angular.module("adventApp", ["ngRoute", "ang-drag-drop"]);
 
 adventApp.controller("adventController", ["$scope", "$location", function (scope, location) {
     scope.messages = {

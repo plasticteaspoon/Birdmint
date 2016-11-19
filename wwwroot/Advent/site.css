@@ -37,3 +37,33 @@ p {
 .verse p{
     white-space: nowrap;
 }
+a {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+}
+.indicator, .guess, .peg {
+    height: 20px;
+    width:20px;
+    margin: 5px;
+    padding: 0px;
+    border:1px solid black;
+}
+
+.separator {
+    height: 20px;
+    width: 20px;
+    margin: 5px;
+    padding: 1px;
+    border: 0px;
+}
+
+.peg {
+    float:left;
+}
+
+.selected {
+    background-color: c; 
+    border-width: 4px;
+    height: 25px;
+    width:25px;
+}

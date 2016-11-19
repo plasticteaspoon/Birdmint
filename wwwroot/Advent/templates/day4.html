@@ -1,3 +1,71 @@
-<div>
-    <img src="{{calendar.rows[0].cols[0].imgUrl}}" class="img-responsive"/>
+<div class="jumbotron">
+    <h1>On the second day of christmas...</h1>
+</div>
+<a href="#">Back to the calendar</a>
+<div class="row display-table">
+    <div class="col-sm-12 display-cell">
+        <img src="pictures/large/sheeta's-crystal.png" class="img-responsive"/>
+    </div> 
+</div>
+<p>Why not play some Mastermind?</p>
+
+<div ng-controller="mastermindController">
+    <h1>Mastermind</h1>
+
+    <h2 ng-show="gameState == 'won'">You Won!</h2>
+    <h2 ng-show="gameState == 'lost'">You Lost!</h2>
+    <h2 ng-show="gameState == 'cheated'">You Cheated!</h2>
+
+    <div ng-show="gameState != 'playing'">
+        <h3>Solution - </h3>
+        <div class="peg" ng-repeat="peg in board.solutions" ng-style="{'background-color': peg.color}"></div>
+    </div>
+
+    <br/>
+
+    <h3>Colours - </h3>
+    <div class="peg" 
+        ng-class="{selected: selected(c)}" 
+        ui-draggable="true" 
+        drag="c"
+        ng-style="{'background-color': c}"
+        ng-repeat="c in pegColors track by $index"
+        ng-click="colorClicked(c)">
+    </div>
+
+    <button class="btn btn-default" ng-click="cheat()">Cheat</button>
+
+    <!--<div>
+        <h3>Current colour - </h3>
+        <div class="peg" ng-style="{'background-color': currentColour}"></div>
+    </div>-->
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="4">Guesses</th>
+                <th></th>
+                <th colspan="4">Progress</th>
+                <th></th>                    
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="r in board.rows">
+                <td ng-repeat="peg in r.guessPegs">
+                    <div class="guess" 
+                        ui-on-drop="onDrop(peg, $data)" 
+                        drop-validate="dropValidate(r)"
+                        ui-draggable="true"
+                        drag="peg.color" 
+                        ng-style="{'background-color': peg.color}"
+                        ng-click="pegClick(peg, r.active)"></div>
+                </td>
+                <td><button class="btn btn-xs btn-default checkButton" ng-show="r.active" ng-disabled="unusedPegCount(r) != 0" ng-click="check($index)">check</button></td>
+                <td ng-repeat="peg in r.indicators">
+                    <div class="indicator" ng-style="{'background-color': peg.color}"></div>
+                </td>
+                                    
+            </tr>
+        </tbody>
+    </table>
 </div>
