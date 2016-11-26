@@ -23,7 +23,7 @@ adventApp.controller("adventController", ["$scope", "$location", function (scope
     };
 
     function openDoorIfCorrectTime (cell) {
-        var december = 10;
+        var december = 11;
         var doorDate = new Date(2016, december, cell.number, 0, 0, 0);
         var now = new Date();
 
