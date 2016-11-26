@@ -1,7 +1,7 @@
 var calendarData = {
         rows : [
             {
-                cols : [
+                cells : [
                     {
                         number : 1,
                         coverImgUrl : 'pictures/small/robot-head.png',
@@ -40,7 +40,7 @@ var calendarData = {
                 ]
             }, 
             {
-                cols : [
+                cells : [
                     {
                         number : 6,
                         coverImgUrl : 'pictures/small/robot-head.png',
@@ -79,7 +79,7 @@ var calendarData = {
                 ]
             }, 
             {
-                cols : [
+                cells : [
                     {
                         number : 11,
                         coverImgUrl : 'pictures/small/robot-head.png',
@@ -118,7 +118,7 @@ var calendarData = {
                 ]
             }, 
             {
-                cols : [
+                cells : [
                     {
                         number : 16,
                         coverImgUrl : 'pictures/small/robot-head.png',
@@ -157,7 +157,7 @@ var calendarData = {
                 ]
             }, 
             {
-                cols : [
+                cells : [
                     {
                         number : 21,
                         coverImgUrl : 'pictures/small/robot-head.png',

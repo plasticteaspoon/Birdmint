@@ -10,10 +10,10 @@
 
 <div class="row" ng-repeat="row in calendar.rows">
     <div class="col-sm-1"></div>
-    <div class="col-sm-2 myAdventCell" ng-repeat="col in row.cols">
-        <img ng-src="{{col.coverImgUrl}}" class="img-responsive" ng-show="col.open == false" ng-click="openDoor(col)"/>
-        <img ng-src="{{col.imgUrl}}" class="img-responsive" ng-show="col.open == true" ng-click="dayPage(col)"/>
-        <h1>{{col.number}}</h1>
+    <div class="col-sm-2 myAdventcell" ng-repeat="cell in row.cells">
+        <img ng-src="{{cell.coverImgUrl}}" class="img-responsive" ng-show="cell.open == false" ng-click="openDoorIfCorrectTime(cell)"/>
+        <img ng-src="{{cell.imgUrl}}" class="img-responsive" ng-show="cell.open == true" ng-click="dayPage(cell)"/>
+        <h1>{{cell.number}}</h1>
     </div>
     <div class="col-sm-1"></div>
 </div>

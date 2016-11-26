@@ -12,21 +12,34 @@ adventApp.controller("adventController", ["$scope", "$location", function (scope
         }
     };
 
-    scope.calendar = calendarData;
+    mangleCalendarData();
 
-    scope.openDoor = function (col) {
+    scope.calendar = calendarData;
+    
+    scope.openDoorIfCorrectTime = openDoorIfCorrectTime;
+
+    scope.dayPage = function (cell) {
+        location.url(cell.link);
+    };
+
+    function openDoorIfCorrectTime (cell) {
         var december = 10;
-        var doorDate = new Date(2016, december, col.number, 0, 0, 0);
+        var doorDate = new Date(2016, december, cell.number, 0, 0, 0);
         var now = new Date();
 
         if(now > doorDate) {
-            col.open = true;
+            cell.open = true;
         }
     };
 
-    scope.dayPage = function (col) {
-        location.url(col.link);
-    };
+    // mangle calendarData so it will open up to and not including today's doors
+    function mangleCalendarData () {
+        calendarData.rows.forEach(function(row) {
+            row.cells.forEach(function(cell) {
+                openDoorIfCorrectTime(cell);
+            });
+        });
+    }
 }]);
 
 adventApp.config(["$routeProvider", function(routeProvider) {
