@@ -58,7 +58,7 @@ var calendarData = {
                     {
                         number : 8,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/full-glass.png',
+                        imgUrl : 'pictures/small/purple-flower.jpg',
                         open : false,
                         link : '/day8'
                     }, 
@@ -97,21 +97,21 @@ var calendarData = {
                     {
                         number : 13,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/anime-princess.png',
+                        imgUrl : 'pictures/small/cat-girl.jpg',
                         open : false,
                         link : '/day13'
                     }, 
                     {
                         number : 14,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/anime-princess.png',
+                        imgUrl : 'pictures/small/full-glass.png',
                         open : false,
                         link : '/day14'
                     }, 
                     {
                         number : 15,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/anime-princess.png',
+                        imgUrl : 'pictures/small/vampire-girl.jpg',
                         open : false,
                         link : '/day15'
                     }, 

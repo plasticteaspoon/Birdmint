@@ -1,3 +1,21 @@
-<div>
-    <img src="{{calendar.rows[0].cols[0].imgUrl}}" class="img-responsive"/>
+<div ng-controller="day6Controller">
+    <div class="jumbotron">
+        <h1>On the sixth day of christmas...</h1>
+    </div>
+    <div jd-home></div>
+    <div class="row display-table">
+        <div class="col-sm-6 display-cell">
+            <p>Who delivers presents to cats?</p>
+            <button class="btn btn-default" ng-click="giveAnswer()" ng-hide="showAnswer == true">Show Answer</button>
+            <p ng-show="showAnswer == true">Answer: Santa Paws!</p>
+        </div>
+        <div class="col-sm-6 display-cell">
+            <img src="pictures/large/christmas-cracker.jpg" class="fullHeightImg"/>
+        </div>
+    </div>
+    <div class="row display-table">
+        <div class="col-sm-12 display-cell">
+            <img src="pictures/large/green-girl.png" class="fullHeightImg"/>
+        </div>
+    </div>
 </div>
