@@ -1,6 +1,10 @@
 var adventApp = angular.module("adventApp", ["ngRoute", "ang-drag-drop"]);
 
 adventApp.controller("adventController", ["$scope", "$location", function (scope, location) {
+    var now = new Date();
+    
+    console.log("The date is" + now);
+    
     scope.messages = {
         info:'',
         success:'',
@@ -17,14 +21,26 @@ adventApp.controller("adventController", ["$scope", "$location", function (scope
     scope.calendar = calendarData;
     
     scope.openDoorIfCorrectTime = openDoorIfCorrectTime;
+    scope.openDoorIfClicked = openDoorIfClicked;
 
     scope.dayPage = function (cell) {
         location.url(cell.link);
     };
 
-    function openDoorIfCorrectTime (cell) {
+    function openDoorIfClicked (cell) {
+        console.log("I WAS CALLED!!!");
         var december = 11;
         var doorDate = new Date(2016, december, cell.number, 0, 0, 0);
+        var now = new Date();
+
+        if(now > doorDate) {
+            cell.open = true;
+        }
+    };
+
+    function openDoorIfCorrectTime (cell) {
+        var december = 11;
+        var doorDate = new Date(2016, december, cell.number, 23, 59, 59);
         var now = new Date();
 
         if(now > doorDate) {

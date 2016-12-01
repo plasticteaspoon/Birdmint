@@ -11,8 +11,8 @@
 <div class="row" ng-repeat="row in calendar.rows">
     <div class="col-sm-1"></div>
     <div class="col-sm-2 myAdventcell" ng-repeat="cell in row.cells">
-        <img ng-src="{{cell.coverImgUrl}}" class="img-responsive" ng-show="cell.open == false" ng-click="openDoorIfCorrectTime(cell)"/>
-        <img ng-src="{{cell.imgUrl}}" class="img-responsive" ng-show="cell.open == true" ng-click="dayPage(cell)"/>
+        <img ng-src="{{cell.coverImgUrl}}" class="img-responsive clickable" ng-show="cell.open == false" ng-click="openDoorIfClicked(cell)" title="Click on me!!!"/>
+        <img ng-src="{{cell.imgUrl}}" class="img-responsive clickable" ng-show="cell.open == true" ng-click="dayPage(cell)" title="Click on me!!!"/>
         <h1>{{cell.number}}</h1>
     </div>
     <div class="col-sm-1"></div>

@@ -72,3 +72,6 @@ a {
     width: 100%;
     height: auto;
 }
+.clickable:hover {
+    cursor: pointer;
+}
