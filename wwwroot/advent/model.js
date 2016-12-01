@@ -3,7 +3,7 @@ var adventApp = angular.module("adventApp", ["ngRoute", "ang-drag-drop"]);
 adventApp.controller("adventController", ["$scope", "$location", function (scope, location) {
     var now = new Date();
     
-    console.log("The date is" + now);
+    //console.log("The date is " + now);
     
     scope.messages = {
         info:'',
