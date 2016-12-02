@@ -72,6 +72,28 @@ a {
     width: 100%;
     height: auto;
 }
+
 .clickable:hover {
     cursor: pointer;
+}
+
+.float-right {
+    float: right;
+    height: 200px;
+    margin: 10px;
+}
+
+.float-left {
+    float: left;
+    height: 200px;
+    margin: 10px;
+}
+
+.centreImg {
+    display: block;
+    margin: auto;
+}
+
+div.full-size {
+    width: 100%;
 }
