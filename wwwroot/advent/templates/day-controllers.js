@@ -10,9 +10,9 @@ adventApp.controller("day2Controller", ["$scope", function (scope) {
         }
     };
 
-    var december = 10;
+    var december = 11;
     var pageDate = new Date(2016, december, 2, 0, 0, 0);
-    var now = new Date(2016, december);
+    var now = new Date();
     
     scope.showAnswer = false;
 
