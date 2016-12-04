@@ -1,12 +1,17 @@
-<div class="jumbotron">
-    <h1>On the ninth day of christmas...</h1>
-</div>
-<div jd-home></div>
-<div class="row display-table">
-    <div class="col-sm-6 display-cell">
-        
+<div ng-controller="day9Controller">
+    <div class="jumbotron">
+        <h1>On the ninth day of christmas...</h1>
     </div>
-    <div class="col-sm-6 display-cell">
-        <img src="pictures/large/girl-explosion.png" class="fullHeightImg"/>
+    <div jd-home></div>
+    <div class="row display-table">
+        <div class="col-sm-6 display-cell">
+            <img src="pictures/large/girl-explosion.png" class="fullHeightImg"/>
+        </div>
+        <div class="col-sm-6 display-cell">
+            <p>What can you hold in you right hand but not your left?</p>
+            <button class="btn btn-default" ng-click="giveAnswer()" ng-hide="showAnswer == true">Show Answer</button>
+            <p ng-show="showAnswer == true">Answer: Your left hand</p>
+            <h2 class="alert alert-info" ng-show="messages.info">{{messages.info}}</h2>
+        </div>        
     </div>
 </div>

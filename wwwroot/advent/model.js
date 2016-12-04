@@ -28,6 +28,7 @@ adventApp.controller("adventController", ["$scope", "$location", function (scope
     };
 
     function openDoorIfClicked (cell) {
+        // DON'T FORGET THE DEBUG!!!
         var december = 11;
         var doorDate = new Date(2016, december, cell.number, 0, 0, 0);
         var now = new Date();
