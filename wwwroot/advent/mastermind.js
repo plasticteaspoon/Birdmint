@@ -1,6 +1,17 @@
 adventApp.controller("mastermindController", ["$scope", function (scope) {
     var i, j, row;
 
+    scope.messages = {
+        info:'',
+        success:'',
+        error:'',
+        clear: function () {
+            this.info = '';
+            this.success = '';
+            this.error = '';
+        }
+    };
+    
     scope.currentColour = "grey";
 
     scope.gameState = "playing";    //"playing", "won", "lost"
@@ -24,6 +35,8 @@ adventApp.controller("mastermindController", ["$scope", function (scope) {
         "blue",
         "purple"
     ];
+
+    giveHints();
 
     //fill the board with empty rows
     for (i = 0; i < scope.board.numRows; i++) {
@@ -167,4 +180,8 @@ adventApp.controller("mastermindController", ["$scope", function (scope) {
             return false;
         }
     };
+
+     function giveHints () {
+        scope.messages.info = "Black means right colour, right place. White means right colour, wrong place. Nothing means the colour isn't in it.";        
+    }
 }]);
