@@ -1,9 +1,21 @@
 var adventApp = angular.module("adventApp", ["ngRoute", "ang-drag-drop"]);
 
-adventApp.controller("adventController", ["$scope", "$location", function (scope, location) {
-    var now = new Date();
-    
-    //console.log("The date is " + now);
+adventApp.factory("adventDate", ["$location", function (location) {
+    return {
+        now: function () {
+            var host = location.host();
+            if (host == "birdmint.com") {
+                return new Date();
+            } else {
+                return new Date(2016, 11, 19, 15, 24, 19, 58);
+            }
+
+        }
+    };
+}]);
+
+adventApp.controller("adventController", ["$scope", "$location", "adventDate", function (scope, location, adventDate) {
+    var now = adventDate.now();
     
     scope.messages = {
         info:'',
@@ -31,7 +43,6 @@ adventApp.controller("adventController", ["$scope", "$location", function (scope
         // DON'T FORGET THE DEBUG!!!
         var december = 11;
         var doorDate = new Date(2016, december, cell.number, 0, 0, 0);
-        var now = new Date();
 
         if(now > doorDate) {
             cell.open = true;
@@ -41,7 +52,6 @@ adventApp.controller("adventController", ["$scope", "$location", function (scope
     function openDoorIfCorrectTime (cell) {
         var december = 11;
         var doorDate = new Date(2016, december, cell.number, 23, 59, 59);
-        var now = new Date();
 
         if(now > doorDate) {
             cell.open = true;

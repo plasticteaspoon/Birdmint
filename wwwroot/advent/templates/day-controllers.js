@@ -1,4 +1,4 @@
-adventApp.controller("day2Controller", ["$scope", function (scope) {
+adventApp.controller("day2Controller", ["$scope", "adventDate", function (scope, adventDate) {
     scope.messages = {
         info:'',
         success:'',
@@ -12,7 +12,7 @@ adventApp.controller("day2Controller", ["$scope", function (scope) {
 
     var december = 11;
     var pageDate = new Date(2016, december, 2, 0, 0, 0);
-    var now = new Date();
+    var now = adventDate.now();
     
     scope.showAnswer = false;
 
@@ -33,7 +33,7 @@ adventApp.controller("day6Controller", ["$scope", function (scope) {
     }
 }]);
 
-adventApp.controller("day9Controller", ["$scope", function (scope) {
+adventApp.controller("day9Controller", ["$scope", "adevntDate", function (scope, adventDate) {
     scope.messages = {
         info:'',
         success:'',
@@ -47,7 +47,7 @@ adventApp.controller("day9Controller", ["$scope", function (scope) {
 
     var december = 11;
     var pageDate = new Date(2016, december, 9, 23, 59, 59);
-    var now = new Date();
+    var now = adventDate.now();
     
     scope.showAnswer = false;
 

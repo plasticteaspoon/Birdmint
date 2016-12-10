@@ -122,35 +122,35 @@ var calendarData = {
                     {
                         number : 16,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/anime-princess.png',
+                        imgUrl : 'pictures/small/coat-girl.jpg',
                         open : false,
                         link : '/day16'
                     }, 
                     {
                         number : 17,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/anime-princess.png',
+                        imgUrl : 'pictures/small/spiral-hair.jpg',
                         open : false,
                         link : '/day17'
                     }, 
                     {
                         number : 18,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/anime-princess.png',
+                        imgUrl : 'pictures/small/electric-girl.jpg',
                         open : false,
                         link : '/day18'
                     }, 
                     {
                         number : 19,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/anime-princess.png',
+                        imgUrl : 'pictures/small/lily.jpg',
                         open : false,
                         link : '/day19'
                     }, 
                     {
                         number : 20,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/anime-princess.png',
+                        imgUrl : 'pictures/small/headphones.jpg',
                         open : false,
                         link : '/day20'
                     }, 
@@ -161,14 +161,14 @@ var calendarData = {
                     {
                         number : 21,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/anime-princess.png',
+                        imgUrl : 'pictures/small/twin-plaits.jpg',
                         open : false,
                         link : '/day21'
                     }, 
                     {
                         number : 22,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/anime-princess.png',
+                        imgUrl : 'pictures/small/feather.jpg',
                         open : false,
                         link : '/day22'
                     }, 
