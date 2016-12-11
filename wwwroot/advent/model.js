@@ -7,7 +7,7 @@ adventApp.factory("adventDate", ["$location", function (location) {
             if (host == "birdmint.com") {
                 return new Date();
             } else {
-                return new Date(2016, 11, 19, 15, 24, 19, 58);
+                return new Date(2016, 11, 26, 15, 24, 19, 58);
             }
 
         }

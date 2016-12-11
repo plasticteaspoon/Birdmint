@@ -15,12 +15,16 @@
 .jumbotron {
     background-image: url('pictures/totoro.jpg');
     background-size: contain;
-    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .fullHeightImg {
     height: 100%;
 }
+
+.fullWidthImg {
+    width: 100%;
+}
+
 p {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 30px;
@@ -96,4 +100,21 @@ a {
 
 div.full-size {
     width: 100%;
+}
+
+#coat-girl {
+    width: 600;
+    height: auto;
+}
+
+h1, h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.recipe, li {
+    font-size: 20px;
+}
+
+.recipe-title {
+    text-align: center;
 }

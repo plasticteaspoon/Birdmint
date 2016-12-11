@@ -1,3 +1,23 @@
-<div>
-    <img src="{{calendar.rows[0].cols[0].imgUrl}}" class="img-responsive"/>
+<div ng-controller="riddleController">
+    <div class="jumbotron">
+        <h1>On the fifteenth day of christmas...</h1>
+    </div>
+    <h2 class="success" ng-show="messages.success">{{messages.success}}</h2>
+    <h2 class="error" ng-show="messages.error">{{messages.error}}</h2>
+    <div jd-home></div>
+    <div class="row display-table">
+        <div class="col-sm-6 display-cell verse">
+            <p>I'm the beginning of the end,</p>
+            <p>and the end of time and space.</p>
+            <p>I'm essential to creation,</p>
+            <p>And I surround every place.</p>
+            <p>What am I?</p>
+            <button class="btn btn-default" ng-click="giveAnswer()" ng-hide="showAnswer == true">Show Answer</button>
+            <p ng-show="showAnswer == true">Answer: The letter 'E'</p>
+            <h2 class="alert alert-info" ng-show="messages.info">{{messages.info}}</h2>
+        </div>
+        <div class="col-sm-6 display-cell">
+            <img src="pictures/large/vampire-girl.jpg" class="fullHeightImg"/>
+        </div>
+    </div>
 </div>
