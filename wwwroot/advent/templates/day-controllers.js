@@ -25,7 +25,7 @@ adventApp.controller("riddleController", ["$scope", "adventDate", function (scop
     }
 }]);
 
-adventApp.controller("day6Controller", ["$scope", function (scope) {
+adventApp.controller("jokeController", ["$scope", function (scope) {
     scope.showAnswer = false;
     
     scope.giveAnswer = function () {

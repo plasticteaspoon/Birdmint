@@ -1,3 +1,21 @@
-<div>
-    <img src="{{calendar.rows[0].cols[0].imgUrl}}" class="img-responsive"/>
+<div ng-controller="jokeController">
+    <div class="jumbotron">
+        <h1>On the seventeenth day of christmas...</h1>
+    </div>
+    <div jd-home></div>
+    <div class="row display-table">
+        <div class="col-sm-6 display-cell">
+            <p>What do you call a one-eyed dinosaur?</p>
+            <button class="btn btn-default" ng-click="giveAnswer()" ng-hide="showAnswer == true">Show Answer</button>
+            <p ng-show="showAnswer == true">Answer: A Doyouthinkhesawus</p>
+        </div>
+        <div class="col-sm-6 display-cell">
+            <img src="pictures/large/christmas-cracker.jpg" class="fullHeightImg"/>
+        </div>
+    </div>
+    <div class="row display-table">
+        <div class="col-sm-12 display-cell">
+            <img src="pictures/large/spiral-hair.jpg" class="fullWidthImg" style="margin:20px"/>
+        </div>
+    </div>
 </div>
