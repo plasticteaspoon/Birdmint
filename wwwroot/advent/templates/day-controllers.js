@@ -47,6 +47,7 @@ adventApp.controller("day23Controller", ["$scope", function (scope) {
     };
 
     scope.selectedBauble = null;
+
     scope.bauble1Colour = 'grey';
     scope.bauble2Colour = 'grey';
     scope.bauble3Colour = 'grey';
@@ -58,6 +59,7 @@ adventApp.controller("day23Controller", ["$scope", function (scope) {
     scope.bauble9Colour = 'grey';
     scope.bauble10Colour = 'grey';
     scope.bauble11Colour = 'grey';
+    scope.bauble12Colour = 'grey';
 
     scope.selectBauble = function (colour) {
         scope.selectedBauble = colour;
@@ -89,9 +91,15 @@ adventApp.controller("day23Controller", ["$scope", function (scope) {
                 scope.bauble11Colour = scope.selectedBauble;
             } else if(bauble == 'bauble12') {
                 scope.bauble12Colour = scope.selectedBauble;
-            } else if(bauble == 'bauble13') {
-                scope.bauble13Colour = scope.selectedBauble;
             }
+        }
+    };
+
+    scope.selected = function (bauble) {
+        if (bauble == scope.selectedBauble) {          
+            return true;
+        } else {
+            return false;
         }
     };
 }]);

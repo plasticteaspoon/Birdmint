@@ -72,6 +72,10 @@ a {
     width:25px;
 }
 
+.adventSelected { 
+    border: 4px black;
+}
+
 .video-responsive {
     width: 100%;
     height: auto;
@@ -116,6 +120,10 @@ h1, h2 {
 }
 
 .recipe-title {
+    text-align: center;
+}
+
+.centre-title {
     text-align: center;
 }
 

@@ -3,6 +3,7 @@
         <h1>On the twenty-third day of christmas...</h1>
     </div>
     <div jd-home></div>
+    <h1 class="centre-title">Decorate the Christmas Tree</h1>
     <div class="row display-table">
         <div class="col-sm-6 display-cell">
             <svg width="300" height="600">
@@ -21,6 +22,7 @@
                 <circle cx="150px" cy="260px" r="10" fill="{{bauble9Colour}}" ng-click="placeBauble('bauble9')"/>
                 <circle cx="90px" cy="330px" r="10" fill="{{bauble10Colour}}" ng-click="placeBauble('bauble10')"/>
                 <circle cx="180px" cy="430px" r="10" fill="{{bauble11Colour}}" ng-click="placeBauble('bauble11')"/>
+                <circle cx="50px" cy="420px" r="10" fill="{{bauble12Colour}}" ng-click="placeBauble('bauble12')"/>
             </svg>
         </div>
         <div class="col-sm-6">
@@ -29,13 +31,23 @@
             <table>
                 <tr>
                     <td>
-                        <svg>
-                            <circle cx="25" cy="25" r="20" fill="blue" ng-click="selectBauble('blue')"/>
+                        <svg height="50" width="50">
+                            <circle cx="25" cy="25" r="20" fill="blue" ng-click="selectBauble('blue')" ng-class="{adventSelected: selected('blue')}"/>
                         </svg>
                     </td>
                     <td>
-                        <svg>
-                            <circle cx="25" cy="25" r="20" fill="red" ng-click="selectBauble('red')"/>
+                        <svg height="50" width="50">
+                            <circle cx="25" cy="25" r="20" fill="red" ng-click="selectBauble('red')" ng-class="{adventSelected: selected('red')}"/>
+                        </svg>
+                    </td>
+                    <td>
+                        <svg height="50" width="50">
+                            <circle cx="25" cy="25" r="20" fill="yellow" ng-click="selectBauble('yellow')" ng-class="{adventSelected: selected('yellow')}"/>
+                        </svg>
+                    </td>
+                    <td>
+                        <svg height="50" width="50">
+                            <circle cx="25" cy="25" r="20" fill="orange" ng-click="selectBauble('orange')" ng-class="{adventSelected: selected('orange')}"/>
                         </svg>
                     </td>
                 </tr>
