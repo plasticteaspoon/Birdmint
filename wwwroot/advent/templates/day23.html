@@ -1,3 +1,50 @@
-<div>
-    <img src="{{calendar.rows[0].cols[0].imgUrl}}" class="img-responsive"/>
+<div ng-controller="day23Controller">
+    <div class="jumbotron">
+        <h1>On the twenty-third day of christmas...</h1>
+    </div>
+    <div jd-home></div>
+    <div class="row display-table">
+        <div class="col-sm-6 display-cell">
+            <svg width="300" height="600">
+                <polygon points="120,50 40,240 200,240" fill="green"/>
+                <polygon points="120,130 20,350 220,350" fill="green"/>
+                <polygon points="120,220 5,470 240,470" fill="green"/>
+                <rect x="90" y="470" height="80" width="60" fill="brown"/>
+                <circle cx="120px" cy="54px" r="10" fill="{{bauble1Colour}}" ng-click="placeBauble('bauble1')"/>
+                <circle cx="42px" cy="238px" r="10" fill="{{bauble2Colour}}" ng-click="placeBauble('bauble2')"/>
+                <circle cx="198px" cy="238px" r="10" fill="{{bauble3Colour}}" ng-click="placeBauble('bauble3')"/>
+                <circle cx="22px" cy="350px" r="10" fill="{{bauble4Colour}}" ng-click="placeBauble('bauble4')"/>
+                <circle cx="218px" cy="350px" r="10" fill="{{bauble5Colour}}" ng-click="placeBauble('bauble5')"/>
+                <circle cx="10px" cy="465px" r="10" fill="{{bauble6Colour}}" ng-click="placeBauble('bauble6')"/>
+                <circle cx="238px" cy="470px" r="10" fill="{{bauble7Colour}}" ng-click="placeBauble('bauble7')"/>
+                <circle cx="100px" cy="170px" r="10" fill="{{bauble8Colour}}" ng-click="placeBauble('bauble8')"/>
+                <circle cx="150px" cy="260px" r="10" fill="{{bauble9Colour}}" ng-click="placeBauble('bauble9')"/>
+                <circle cx="90px" cy="330px" r="10" fill="{{bauble10Colour}}" ng-click="placeBauble('bauble10')"/>
+                <circle cx="180px" cy="430px" r="10" fill="{{bauble11Colour}}" ng-click="placeBauble('bauble11')"/>
+            </svg>
+        </div>
+        <div class="col-sm-6">
+            <p ng-show="selectedBauble">The {{selectedBauble}} bauble is selected.</p>
+            <p ng-hide="selectedBauble">There is no bauble selected.</p>
+            <table>
+                <tr>
+                    <td>
+                        <svg>
+                            <circle cx="25" cy="25" r="20" fill="blue" ng-click="selectBauble('blue')"/>
+                        </svg>
+                    </td>
+                    <td>
+                        <svg>
+                            <circle cx="25" cy="25" r="20" fill="red" ng-click="selectBauble('red')"/>
+                        </svg>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row display-table">
+        <div class="col-sm-12 display-cell">
+            <img src="pictures/large/dragon.jpg" class="fullWidthImg"/>
+        </div>
+    </div>
 </div>
