@@ -1,3 +1,39 @@
-<div>
-    <img src="{{calendar.rows[0].cols[0].imgUrl}}" class="img-responsive"/>
+<div ng-controller="day22Controller">
+    <div class="jumbotron">
+        <h1>On the twenty-second day of christmas...</h1>
+    </div>
+    <h2 class="success" ng-show="messages.success">{{messages.success}}</h2>
+    <h2 class="error" ng-show="messages.error">{{messages.error}}</h2>
+    <div jd-home></div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Can you name the birds in the pictures?</h1>
+
+            <img src="pictures/birds/blackbirds_and_sparrow.jpg" class="birds"/>
+            <img src="pictures/birds/chaffinch.jpg" class="birds"/>
+            <img src="pictures/birds/chaffinch_and_coal-tit.jpg" class="birds"/>
+            <img src="pictures/birds/chaffinch_and_coal-tit(2).jpg" class="birds"/>
+            <img src="pictures/birds/chaffinch_ground.jpg" class="birds"/>
+            <img src="pictures/birds/coal-tit.jpg" class="birds"/>
+            <img src="pictures/birds/dove.jpg" class="birds"/>
+            <img src="pictures/birds/greenfinch.jpg" class="birds"/>
+        </div>
+    </div>
+
+    <button class="btn btn-default birds-button" ng-click="giveAnswer()" ng-hide="showAnswer == true">Show Answers</button>
+    <ul style="margin: 5px">
+        <li ng-show="showAnswer == true">Chaffinches</li>
+        <li ng-show="showAnswer == true">A greenfinch</li>
+        <li ng-show="showAnswer == true">Coal-tits</li>
+        <li ng-show="showAnswer == true">A collared dove</li>
+        <li ng-show="showAnswer == true">Blackbirds</li>
+        <li ng-show="showAnswer == true">A sparrow</li>
+    </ul>
+    <h2 class="alert alert-info" ng-show="messages.info">{{messages.info}}</h2>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img src="pictures/large/feather.jpg" class="fullWidthImg" id="feather"/>
+        </div>
+    </div>
 </div>

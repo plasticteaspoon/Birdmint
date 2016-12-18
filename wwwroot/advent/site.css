@@ -135,3 +135,37 @@ h1, h2 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 25px;
 }
+
+.birds {
+    height: 200;
+    width: auto;
+    margin: 5px;
+}
+
+.birds-button {
+    height: 50;
+    margin: 5px
+}
+
+#feather {
+    margin-top: 50px;
+}
+
+.jigsaw-piece {
+    height: 100px;
+    width: 100px;
+}
+
+.jigsaw-cell {
+    border: 1px black dashed; 
+    height: 100px; 
+    width: 100px;
+    position: absolute;
+}
+
+.jigsaw-board {
+    height: 400px;
+    width: 400px;
+    position: relative;
+    border: 2px solid black;
+}

@@ -1,3 +1,26 @@
-<div>
-    <img src="{{calendar.rows[0].cols[0].imgUrl}}" class="img-responsive"/>
+<div ng-controller="day20Controller">
+    <div class="jumbotron">
+        <h1>On the twentieth day of christmas...</h1>
+    </div>
+    <div jd-home></div>
+    <div>
+        <div class="col-sm-5">
+            <img ng-src="{{piece.picturePath}}" 
+            ng-repeat="piece in box"
+            ui-draggable="true" 
+            drag="{index: $index, originCell: null}"
+            class="jigsaw-piece"
+            ng-hide="piece.taken == true"/>
+        </div>
+        <div class="col-sm-7">
+            <div class="jigsaw-board">
+                <div ng-repeat="cell in board.cells" 
+                class="jigsaw-cell" 
+                ui-on-drop="onDrop(cell, $data)"
+                ui-draggable="true"
+                drag="{index: cell.pieceIndex, originCell: $index}"
+                ng-style="{'top': cell.y*100, 'left': cell.x*100, 'backgroundImage': cell.picture, 'background-size': '100px 100px'}"></div>
+            </div>
+        </div>
+    </div>
 </div>

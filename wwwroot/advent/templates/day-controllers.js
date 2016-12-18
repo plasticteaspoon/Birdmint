@@ -103,3 +103,223 @@ adventApp.controller("day23Controller", ["$scope", function (scope) {
         }
     };
 }]);
+
+adventApp.controller("day22Controller", ["$scope", function (scope) {
+    scope.showAnswer = false;
+    
+    scope.giveAnswer = function () {
+            scope.showAnswer = true;
+    }
+}]);
+
+
+adventApp.controller("day20Controller", ["$scope", function (scope) {
+    console.log("Starting controller");
+
+    var box = [
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-3-0.jpg',
+            position: null,
+            taken: false
+        },
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-2-1.jpg',
+            position: null,
+            taken: false
+        },        
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-0-1.jpg',
+            position: null,
+            taken: false
+        },
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-2-3.jpg',
+            position: null,
+            taken: false
+        },          
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-0-2.jpg',
+            position: null,
+            taken: false
+        },
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-0-3.jpg',
+            position: null,
+            taken: false
+        },
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-1-0.jpg',
+            position: null,
+            taken: false
+        },
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-2-0.jpg',
+            position: null,
+            taken: false
+        },
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-1-1.jpg',
+            position: null,
+            taken: false
+        },
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-0-0.jpg',
+            position: null,
+            taken: false
+        },
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-1-2.jpg',
+            position: null,
+            taken: false
+        },
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-3-2.jpg',
+            position: null,
+            taken: false
+        },
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-1-3.jpg',
+            position: null,
+            taken: false
+        },        
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-2-2.jpg',
+            position: null,
+            taken: false
+        },      
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-3-1.jpg',
+            position: null,
+            taken: false
+        },
+        {
+            picturePath: 'pictures/large/jigsaw-pieces/headphones-3-3.jpg',
+            position: null,
+            taken: false
+        }
+    ];
+
+    var board = {
+        cells: [
+            {
+                picture: null,
+                x: 0,
+                y: 0,
+                pieceIndex: null
+            },
+            {
+                picture: null,
+                x: 1,
+                y: 0,
+                pieceIndex: null                
+            },
+
+            {
+                picture: null,
+                x: 2,
+                y: 0,
+                pieceIndex: null
+            },
+            {
+                picture: null,
+                x: 3,
+                y: 0,
+                pieceIndex: null
+            },
+            {
+                picture: null,
+                x: 0,
+                y: 1,
+                pieceIndex: null
+            },
+            {
+                picture: null,
+                x: 1,
+                y: 1,
+                pieceIndex: null
+            },
+
+            {
+                picture: null,
+                x: 2,
+                y: 1,
+                pieceIndex: null
+            },
+            {
+                picture: null,
+                x: 3,
+                y: 1,
+                pieceIndex: null
+            },            
+            {
+                picture: null,
+                x: 0,
+                y: 2,
+                pieceIndex: null
+            },
+            {
+                picture: null,
+                x: 1,
+                y: 2,
+                pieceIndex: null
+            },
+            {
+                picture: null,
+                x: 2,
+                y: 2,
+                pieceIndex: null
+            },
+            {
+                picture: null,
+                x: 3,
+                y: 2,
+                pieceIndex: null
+            },            
+            {
+                picture: null,
+                x: 0,
+                y: 3,
+                pieceIndex: null
+            },
+            {
+                picture: null,
+                x: 1,
+                y: 3,
+                pieceIndex: null
+            },
+            {
+                picture: null,
+                x: 2,
+                y: 3,
+                pieceIndex: null
+            },
+            {
+                picture: null,
+                x: 3,
+                y: 3,
+                pieceIndex: null
+            }            
+        ]
+    };
+
+    scope.box = box;
+    scope.board = board;
+
+    scope.onDrop = function (cell, data) {
+        //console.log("Cell contains: " + JSON.stringify(cell));
+        //console.log("Data contains: " + JSON.stringify(data));
+        cell.picture = 'url("' + box[data.index].picturePath + '")';
+
+        if (cell.pieceIndex != null) {
+            box[cell.pieceIndex].taken = false;
+        }        
+        if (data.originCell == null) {
+            box[data.index].taken = true;
+        } else {
+            board.cells[data.originCell].pieceIndex = null;
+            board.cells[data.originCell].picture = null;
+        }
+
+        cell.pieceIndex = data.index;
+    };
+}]);
