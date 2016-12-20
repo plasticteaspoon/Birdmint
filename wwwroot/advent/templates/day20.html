@@ -7,6 +7,7 @@
         <div class="col-sm-12">
             <p>This was suggested by Richard Maxey. Can you solve the jigsaw to see today's picture?</p>
             <p>Drag a piece from the side and place it on the grid. You can move previosly placed piece around.</p>
+            <p>Note: This does not work with touch screen devices.</p>
         </div>
     </div>
 
@@ -17,7 +18,8 @@
             ui-draggable="true" 
             drag="{index: $index, originCell: null}"
             class="jigsaw-piece"
-            ng-hide="piece.taken == true"/>
+            ng-hide="piece.taken == true"
+            ng-click="selectPiece()"/>
         </div>
         <div class="col-sm-7">
             <div class="jigsaw-board">
@@ -26,7 +28,8 @@
                 ui-on-drop="onDrop(cell, $data)"
                 ui-draggable="true"
                 drag="{index: cell.pieceIndex, originCell: $index}"
-                ng-style="{'top': cell.y*100, 'left': cell.x*100, 'backgroundImage': cell.picture, 'background-size': '100px 100px'}"></div>
+                ng-style="{'top': cell.y*100, 'left': cell.x*100, 'backgroundImage': cell.picture, 'background-size': '100px 100px'}"
+                ng-click="selectPiece(cell)"></div>
             </div>
         </div>
     </div>

@@ -120,82 +120,98 @@ adventApp.controller("day20Controller", ["$scope", function (scope) {
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-3-0.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-2-1.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },        
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-0-1.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-2-3.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },          
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-0-2.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-0-3.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-1-0.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-2-0.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-1-1.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-0-0.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-1-2.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-3-2.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-1-3.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },        
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-2-2.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },      
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-3-1.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         },
         {
             picturePath: 'pictures/large/jigsaw-pieces/headphones-3-3.jpg',
             position: null,
-            taken: false
+            taken: false,
+            selected: false
         }
     ];
 
@@ -304,6 +320,8 @@ adventApp.controller("day20Controller", ["$scope", function (scope) {
 
     scope.box = box;
     scope.board = board;
+
+    scope.selectedPiece = null;
 
     scope.onDrop = function (cell, data) {
         //console.log("Cell contains: " + JSON.stringify(cell));
