@@ -3,7 +3,14 @@
         <h1>On the twentieth day of christmas...</h1>
     </div>
     <div jd-home></div>
-    <div>
+    <div class="row">
+        <div class="col-sm-12">
+            <p>This was suggested by Richard Maxey. Can you solve the jigsaw to see today's picture?</p>
+            <p>Drag a piece from the side and place it on the grid. You can move previosly placed piece around.</p>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-sm-5">
             <img ng-src="{{piece.picturePath}}" 
             ng-repeat="piece in box"

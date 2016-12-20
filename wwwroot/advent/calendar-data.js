@@ -182,7 +182,7 @@ var calendarData = {
                     {
                         number : 24,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/anime-princess.png',
+                        imgUrl : 'pictures/small/holly.png',
                         open : false,
                         link : '/day24'
                     }, 
