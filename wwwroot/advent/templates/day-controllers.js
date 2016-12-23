@@ -341,3 +341,11 @@ adventApp.controller("day20Controller", ["$scope", function (scope) {
         cell.pieceIndex = data.index;
     };
 }]);
+
+adventApp.controller("day25Controller", ["$scope", function (scope) {
+    scope.presentOpened = false;
+    
+    scope.openPresent = function () {
+            scope.presentOpened = true;
+    }
+}]);

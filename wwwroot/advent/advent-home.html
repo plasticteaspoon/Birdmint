@@ -41,8 +41,11 @@
         <script  src="story-directive.js"></script>
     </head> 
 
-    <body>
-        <div class="container" ng-controller="adventController">
+    <body  ng-controller="adventController" ng-style="{'background-color': backgroundColor}">
+        <div class="container">
+            <div id="snowflakeContainer">
+                <p class="snowflake">*</p>
+            </div>
 
             <h2 class="alert alert-info" ng-show="messages.info">{{messages.warning}}</h2>
             <h2 class="success" ng-show="messages.success">{{messages.success}}</h2>
@@ -53,4 +56,6 @@
             <a href="/home.html">Return to Birdmint</a>
         </div>
     </body>
+
+    <script src="fallingsnow_v6.js"></script>    
 </html>

@@ -7,7 +7,7 @@ adventApp.factory("adventDate", ["$location", function (location) {
             if (host == "birdmint.com") {
                 return new Date();
             } else {
-                return new Date(2016, 11, 26, 15, 24, 19, 58);
+                return new Date(2016, 11, 25, 15, 24, 19, 58);
             }
 
         }
@@ -35,13 +35,27 @@ adventApp.controller("adventController", ["$scope", "$location", "adventDate", f
     scope.openDoorIfCorrectTime = openDoorIfCorrectTime;
     scope.openDoorIfClicked = openDoorIfClicked;
 
+    getBackground();
+    
     scope.dayPage = function (cell) {
         location.url(cell.link);
     };
 
-    function openDoorIfClicked (cell) {
-        // DON'T FORGET THE DEBUG!!!
+    function getBackground () {
         var december = 11;
+        var christmasDay = new Date(2016, december, 25, 0, 0, 0);
+
+        if (now > christmasDay) {
+            scope.backgroundColor = 'grey';
+            generateSnowflakes();
+        } else {
+            scope.backgroundColor = 'white';
+        }
+    }
+
+    function openDoorIfClicked (cell) {
+        var december = 11;
+        //create a date that the cell opens on
         var doorDate = new Date(2016, december, cell.number, 0, 0, 0);
 
         if(now > doorDate) {
@@ -51,6 +65,7 @@ adventApp.controller("adventController", ["$scope", "$location", "adventDate", f
 
     function openDoorIfCorrectTime (cell) {
         var december = 11;
+        //create a date that the cell opens on
         var doorDate = new Date(2016, december, cell.number, 23, 59, 59);
 
         if(now > doorDate) {
