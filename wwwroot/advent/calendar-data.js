@@ -189,7 +189,7 @@ var calendarData = {
                     {
                         number : 25,
                         coverImgUrl : 'pictures/small/robot-head.png',
-                        imgUrl : 'pictures/small/anime-princess.png',
+                        imgUrl : 'pictures/small/hand.jpg',
                         open : false,
                         link : '/day25'
                     }, 
