@@ -192,3 +192,15 @@ h1, h2 {
 .snowflake:hover {
     cursor: default;
 }
+
+#christmasGreeting {
+    text-align: center; 
+    border-bottom: 1px solid green;
+    font-family: Copperplate Gothic Light, sans-serif;
+    font-size: 50px;
+    color: red;
+}
+
+.top-margin {
+    margin-top: 20px;
+}

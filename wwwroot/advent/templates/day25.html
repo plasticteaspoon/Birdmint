@@ -1,13 +1,22 @@
 <div ng-controller="day25Controller">
     <div class="jumbotron">
-        <h1>Merry Christmas!!!</h1>
+        <h1>On the last day of Christmas</h1>
     </div>
     <div jd-home></div>
     <div class="row">
         <div class="col-sm-12">
-            <h1 id="christmasHeading"><b>Open your present</b></h1>
+            <h2 id="christmasHeading" ng-hide="presentOpened == true"><b>Open your present</b> (Click on it)</h2>
             <img src="pictures/large/present.png" ng-hide="presentOpened == true" ng-click="openPresent()" class="centreImg"/>
-            <img src="pictures/large/hand.jpg" ng-show="presentOpened == true" class="centreImg"/>
+            <div ng-show="presentOpened == true">
+                <h1 id="christmasGreeting">MERRY CHRISTMAS!!!</h1>
+                <p>I really hope you have enjoyed my advent calendar. 
+                    Please tell me anything I could improve if I decided to do this again.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <img src="pictures/large/hand.jpg" class="centreImg top-margin"/>
         </div>
     </div>
 </div>
