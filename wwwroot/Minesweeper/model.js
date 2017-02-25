@@ -1,3 +1,4 @@
+"use strict";
 var mineApp = angular.module("mineApp", ['ngRightClick']);
 
 mineApp.controller("mineController", ["$scope", function (scope) {
@@ -21,12 +22,12 @@ mineApp.controller("mineController", ["$scope", function (scope) {
         rows: []
     };
 
-    for (i = 0; i < scope.grid.numRows; i++) {
-        row = {
+    for (var i = 0; i < scope.grid.numRows; i++) {
+        var row = {
             cells: []
         };
 
-        for (j = 0; j < scope.grid.numCols; j++) {
+        for (var j = 0; j < scope.grid.numCols; j++) {
             row.cells.push({ mined: false, open: false, marked: false, x: j, y: i, numCloseMines: 0});
         }
 
@@ -34,6 +35,7 @@ mineApp.controller("mineController", ["$scope", function (scope) {
     }
 
     placeMines();
+    countSurroundingMines();
 
     scope.cellClicked = function (cell) {
         if(cell.open == false) {
@@ -52,8 +54,8 @@ mineApp.controller("mineController", ["$scope", function (scope) {
 
     function placeMines () {
         while (minesPlaced < scope.grid.numMines) {
-            randomRow = Math.floor((Math.random() * (scope.grid.numRows - 1)) + 0);
-            randomCol = Math.floor((Math.random() * (scope.grid.numCols - 1)) + 0);
+            var randomRow = Math.floor((Math.random() * (scope.grid.numRows - 1)) + 0);
+            var randomCol = Math.floor((Math.random() * (scope.grid.numCols - 1)) + 0);
 
             if (scope.grid.rows[randomRow].cells[randomCol].mined == false) {
                 scope.grid.rows[randomRow].cells[randomCol].mined = true;
@@ -63,49 +65,37 @@ mineApp.controller("mineController", ["$scope", function (scope) {
     }
 
     function countSurroundingMines () {
-        for (i = 0; i < scope.grid.numRows; i++) {
+        for (var i = 0; i < scope.grid.numRows; i++) {
 
-            for (j = 0; j < scope.grid.numCols; j++) {
-                mineCount = 0;
+            for (var j = 0; j < scope.grid.numCols; j++) {
+                var mineCount = 0;
                 
-                if(scope.grid.rows[i].cells[j-1].x >= 0 && 
-                scope.grid.rows[i].cells[j-1].x < numCols && 
+                if(scope.grid.rows[i].cells[j-1] && 
                 scope.grid.rows[i].cells[j-1].mined == true) {
                        mineCount ++;
-                } if(scope.grid.rows[i].cells[j+1].x >= 0 && 
-                  scope.grid.rows[i].cells[j+1].x < numCols && 
+                } if(scope.grid.rows[i].cells[j+1] &&
                   scope.grid.rows[i].cells[j+1].mined == true) {
                       mineCount ++;
-                } if(scope.grid.rows[i-1].cells[j].y >= 0 && 
-                  scope.grid.rows[i-1].cells[j].y < numRows && 
+                } if(scope.grid.rows[i-1] && 
                   scope.grid.rows[i-1].cells[j].mined == true) {
                       mineCount ++;
-                } if(scope.grid.rows[i-1].cells[j-1].x >= 0 && 
-                  scope.grid.rows[i-1].cells[j-1].x < numCols &&
-                  scope.grid.rows[i-1].cells[j-1].y >= 0 && 
-                  scope.grid.rows[i-1].cells[j-1].y < numRows && 
+                } if(scope.grid.rows[i-1] &&
+                  scope.grid.rows[i-1].cells[j-1] && 
                   scope.grid.rows[i-1].cells[j-1].mined == true) {
                       mineCount ++;
-                } if(scope.grid.rows[i-1].cells[j+1].x >= 0 && 
-                  scope.grid.rows[i-1].cells[j+1].x < numCols &&
-                  scope.grid.rows[i-1].cells[j+1].y >= 0 && 
-                  scope.grid.rows[i-1].cells[j+1].y < numRows && 
+                } if(scope.grid.rows[i-1] &&
+                  scope.grid.rows[i-1].cells[j+1] && 
                   scope.grid.rows[i-1].cells[j+1].mined == true) {
                       mineCount ++;
-                } if(scope.grid.rows[i+1].cells[j].y >= 0 && 
-                  scope.grid.rows[i+1].cells[j].y < numRows && 
+                } if(scope.grid.rows[i+1] && 
                   scope.grid.rows[i+1].cells[j].mined == true) {
                       mineCount ++;
-                } if(scope.grid.rows[i+1].cells[j-1].x >= 0 && 
-                  scope.grid.rows[i+1].cells[j-1].x < numCols &&
-                  scope.grid.rows[i+1].cells[j-1].y >= 0 && 
-                  scope.grid.rows[i+1].cells[j-1].y < numRows && 
+                } if(scope.grid.rows[i+1] &&
+                  scope.grid.rows[i+1].cells[j-1] && 
                   scope.grid.rows[i+1].cells[j-1].mined == true) {
                       mineCount ++;
-                } if(scope.grid.rows[i+1].cells[j+1].x >= 0 && 
-                  scope.grid.rows[i+1].cells[j+1].x < numCols &&
-                  scope.grid.rows[i+1].cells[j+1].y >= 0 && 
-                  scope.grid.rows[i+1].cells[j+1].y < numRows && 
+                } if(scope.grid.rows[i+1] &&
+                  scope.grid.rows[i+1].cells[j+1] && 
                   scope.grid.rows[i+1].cells[j+1].mined == true) {
                       mineCount ++;
                 }
