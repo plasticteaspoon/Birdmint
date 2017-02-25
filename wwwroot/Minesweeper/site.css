@@ -1,0 +1,30 @@
+.jd-warning {
+    color : orange;
+}
+.jd-success {
+    color : green;
+}
+.jd-error {
+    color: red;
+}
+
+.jd-cell {
+    margin: 0px;
+    border: 1px solid black;
+    height: 50px;
+    width: 50px;
+    background-color: lightgray;
+}
+.jd-cell-open {
+    background-color: white;
+}
+.jd-cell-exploded {
+    background-color: red;
+    background-image: url("mine.png");
+    background-size: 50px 50px;
+}
+.jd-cell-marked {
+    background-color: white;
+    background-image: url("flag.png");
+    background-size: 50px 50px;
+}
