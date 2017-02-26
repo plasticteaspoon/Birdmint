@@ -28,3 +28,6 @@
     background-image: url("flag.png");
     background-size: 50px 50px;
 }
+td {
+    text-align: center;
+}

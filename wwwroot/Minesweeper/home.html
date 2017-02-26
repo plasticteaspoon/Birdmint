@@ -40,17 +40,16 @@
             <table>
                 <tbody>
                     <tr  ng-repeat="row in grid.rows">
-                        <td ng-repeat="cell in row.cells">
-                            <div 
-                                class="jd-cell" 
-                                ng-click="cellClicked(cell)"
-                                ng-right-click="cellRightClicked(cell)"
-                                ng-class="{
-                                    'jd-cell-open': cell.open, 
-                                    'jd-cell-exploded': cell.open && cell.mined,
-                                    'jd-cell-marked': cell.marked
-                                }"
-                            >{{cell.numCloseMines}}</div>
+                        <td ng-repeat="cell in row.cells"
+                            class="jd-cell" 
+                            ng-click="cellClicked(cell)"
+                            ng-right-click="cellRightClicked(cell)"
+                            ng-class="{
+                                'jd-cell-open': cell.open, 
+                                'jd-cell-exploded': cell.open && cell.mined,
+                                'jd-cell-marked': cell.marked
+                            }">
+                            <div ng-show="cell.open && cell.mined == false">{{cell.numCloseMines}}</div>
                         </td>
                     </tr>
                 </tbody>
