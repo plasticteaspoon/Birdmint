@@ -11,8 +11,8 @@
 .jd-cell {
     margin: 0px;
     border: 1px solid black;
-    height: 50px;
-    width: 50px;
+    height: 20px;
+    width: 20px;
     background-color: lightgray;
 }
 .jd-cell-open {
@@ -20,13 +20,20 @@
 }
 .jd-cell-exploded {
     background-color: red;
+}
+.jd-cell-mined {
     background-image: url("mine.png");
-    background-size: 50px 50px;
+    background-size: 20px 20px;
 }
 .jd-cell-marked {
     background-color: white;
     background-image: url("flag.png");
-    background-size: 50px 50px;
+    background-size: 20px 20px;
+}
+.jd-cell-bad-marked {
+    background-color: white;
+    background-image: url("cross.png");
+    background-size: 20px 20px;
 }
 td {
     text-align: center;

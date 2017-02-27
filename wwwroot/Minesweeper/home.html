@@ -37,6 +37,9 @@
             <h2 class="success" ng-show="messages.success">{{messages.success}}</h2>
             <h2 class="error" ng-show="messages.error">{{messages.error}}</h2>
 
+            <h2 ng-show="getGameState() == 'won'">Well done! You avoided death by mine explosion</h2>
+            <h2 ng-show="getGameState() == 'lost'">Uh oh! You were blown up!!!</h2>
+
             <table>
                 <tbody>
                     <tr  ng-repeat="row in grid.rows">
@@ -46,10 +49,12 @@
                             ng-right-click="cellRightClicked(cell)"
                             ng-class="{
                                 'jd-cell-open': cell.open, 
-                                'jd-cell-exploded': cell.open && cell.mined,
-                                'jd-cell-marked': cell.marked
+                                'jd-cell-mined': cell.mined && cell.open,                                
+                                'jd-cell-exploded': cell.detonated,
+                                'jd-cell-marked': cell.marked,
+                                'jd-cell-bad-marked': cell.marked && !cell.mined && getGameState() == 'lost'                                
                             }">
-                            <div ng-show="cell.open && cell.mined == false">{{cell.numCloseMines}}</div>
+                            <div ng-show="cell.open && cell.mined == false && cell.numCloseMines != 0">{{cell.numCloseMines}}</div>
                         </td>
                     </tr>
                 </tbody>
