@@ -17,7 +17,7 @@ mineApp.controller("mineController", ["$scope", function (scope) {
 
     scope.grid = {
         numRows: 10,
-        numCols: 10,
+        numCols: 11,
         numMines: 10,
         rows: []
     };
@@ -69,15 +69,55 @@ mineApp.controller("mineController", ["$scope", function (scope) {
     };
 
     function placeMines () {
-        while (minesPlaced < scope.grid.numMines) {
-            var randomRow = Math.floor((Math.random() * scope.grid.numRows));
-            var randomCol = Math.floor((Math.random() * scope.grid.numCols));
+        scope.grid.rows[1].cells[1].mined = true;
+        scope.grid.rows[1].cells[4].mined = true;
+        scope.grid.rows[1].cells[5].mined = true;
+        scope.grid.rows[1].cells[9].mined = true;
 
-            if (scope.grid.rows[randomRow].cells[randomCol].mined == false) {
-                scope.grid.rows[randomRow].cells[randomCol].mined = true;
-                minesPlaced++;
-            }
-        }
+        scope.grid.rows[2].cells[0].mined = true;
+        scope.grid.rows[2].cells[2].mined = true;
+        scope.grid.rows[2].cells[4].mined = true;
+        scope.grid.rows[2].cells[6].mined = true;
+        scope.grid.rows[2].cells[8].mined = true;
+        scope.grid.rows[2].cells[10].mined = true;
+
+        scope.grid.rows[3].cells[0].mined = true;
+        scope.grid.rows[3].cells[2].mined = true;
+        scope.grid.rows[3].cells[4].mined = true;
+        scope.grid.rows[3].cells[6].mined = true;
+        scope.grid.rows[3].cells[8].mined = true;
+        scope.grid.rows[3].cells[10].mined = true;
+
+        scope.grid.rows[4].cells[0].mined = true;
+        scope.grid.rows[4].cells[2].mined = true;
+        scope.grid.rows[4].cells[4].mined = true;
+        scope.grid.rows[4].cells[5].mined = true;
+        scope.grid.rows[4].cells[8].mined = true;
+        scope.grid.rows[4].cells[10].mined = true;
+
+        scope.grid.rows[5].cells[0].mined = true;
+        scope.grid.rows[5].cells[2].mined = true;
+        scope.grid.rows[5].cells[4].mined = true;
+        scope.grid.rows[5].cells[8].mined = true;
+        scope.grid.rows[5].cells[9].mined = true;
+        scope.grid.rows[5].cells[10].mined = true;
+
+        scope.grid.rows[6].cells[0].mined = true;
+        scope.grid.rows[6].cells[2].mined = true;
+        scope.grid.rows[6].cells[4].mined = true;
+        scope.grid.rows[6].cells[8].mined = true;
+        scope.grid.rows[6].cells[10].mined = true;
+
+        scope.grid.rows[7].cells[0].mined = true;
+        scope.grid.rows[7].cells[2].mined = true;
+        scope.grid.rows[7].cells[4].mined = true;
+        scope.grid.rows[7].cells[8].mined = true;
+        scope.grid.rows[7].cells[10].mined = true;
+
+        scope.grid.rows[8].cells[1].mined = true;
+        scope.grid.rows[8].cells[4].mined = true;
+        scope.grid.rows[8].cells[8].mined = true;
+        scope.grid.rows[8].cells[10].mined = true;
     }
 
     function countSurroundingMines () {

@@ -11,4 +11,6 @@ opaApp.controller("opaController", ["$scope", function (scope) {
             this.error = '';
         }
     };
+
+    
 }]);

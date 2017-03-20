@@ -1,0 +1,39 @@
+.warning {
+    color : orange;
+}
+.success {
+    color : green;
+}
+.error {
+    color: red;
+}
+
+body {
+    background-image: url("cobblestone.jpg");
+}
+h1 {
+    text-align: center;
+}
+
+.bomb {
+    height: 50;
+    width: 50;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;    
+}
+
+.danger-zone {
+    height: 250;
+    width: 400;
+    border: 5px dashed red;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;    
+}

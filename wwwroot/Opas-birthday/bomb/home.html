@@ -24,19 +24,15 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.min.js"></script>
 
         <!-- Your angularjs model-->
-        <script src="model.js"></script>
+        <script src="/Opas-birthday/model.js"></script>
     </head> 
 
     <body>
         <div class="container" ng-controller="opaController">
-            <h1 class="jumbotron">Happy Birthday Opa</h1>
-
-            <h2 class="warning" ng-show="messages.warning">{{messages.warning}}</h2>
-            <h2 class="success" ng-show="messages.success">{{messages.success}}</h2>
-            <h2 class="error" ng-show="messages.error">{{messages.error}}</h2>
-
-            <a href="Minesweeper/home.html" class="btn btn-default" role="button">Minesweeper</a>
-            <a href="bomb/home.html" class="btn btn-default" role="button">Don't Blow Up the Master</a>
+            <h1>Don't Blow Up the Master!</h1>
+            <div class="danger-zone">
+                <img src="bomb.png" class="bomb"/>
+            </div>
         </div>
     </body>
 </html>
