@@ -22,4 +22,12 @@ opaApp.controller("opaController", ["$scope", "$interval", function (scope, inte
             }
         }, 1000);
     };
+
+    scope.countdownClass = function () {
+        if(scope.countdown == 10) {
+            return false;
+        } else {
+            return true;
+        }
+    };
 }]);

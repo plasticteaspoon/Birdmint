@@ -20,23 +20,9 @@ p{
     color: black;
 }
 
-.single-digit-countdown {
+.countdown {
     font-size: 50px;
     color: black;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 10px;
-}
-.double-digit-countdown {
-    font-size: 50px;
-    color: black;
-}
-
-#countdown-box {
-    border: 10px solid black;
-    height: 80px;
-    width: 80px;
 }
 
 .bomb {
