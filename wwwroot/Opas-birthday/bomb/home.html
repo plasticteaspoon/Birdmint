@@ -30,8 +30,12 @@
     <body>
         <div class="container" ng-controller="opaController">
             <h1>Don't Blow Up the Master!</h1>
+            <div id="countdown-box">
+                <h2 ><b>{{countdown}}</b></h2>
+            </div>
+            <p>Click the bomb to start countdown</p>
             <div class="danger-zone">
-                <img src="bomb.png" class="bomb"/>
+                <img src="bomb.png" class="bomb" ng-click="startCountdown()"/>
             </div>
         </div>
     </body>

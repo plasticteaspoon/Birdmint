@@ -1,6 +1,6 @@
 var opaApp = angular.module("opaApp", []);
 
-opaApp.controller("opaController", ["$scope", function (scope) {
+opaApp.controller("opaController", ["$scope", "$interval", function (scope, interval) {
     scope.messages = {
         warning:'',
         success:'',
@@ -12,5 +12,14 @@ opaApp.controller("opaController", ["$scope", function (scope) {
         }
     };
 
-    
+    scope.countdown = 10;
+
+    scope.startCountdown = function () {
+        var timerId = interval(function () {
+            scope.countdown = scope.countdown-1;
+            if(scope.countdown == 0) {
+                interval.cancel(timerId);
+            }
+        }, 1000);
+    };
 }]);
