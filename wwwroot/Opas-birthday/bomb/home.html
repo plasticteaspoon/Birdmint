@@ -35,8 +35,10 @@
             </div>
             <p>Click the bomb to start countdown</p>
             <div class="danger-zone">
-                <img src="bomb.png" class="bomb" ng-click="startCountdown()"/>
+                <img src="bomb.png" class="bomb" ng-click="startCountdown()" ng-show="bombExploded == false"/>
+                <img src="explosion.png" class="explosion" ng-show="bombExploded"/>
             </div>
+            <img src="kitten.png" ng-style="style"/>
         </div>
     </body>
 </html>

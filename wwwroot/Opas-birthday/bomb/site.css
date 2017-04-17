@@ -46,4 +46,10 @@ p{
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: -2;
+}
+
+.explosion {
+    height: 240px;
+    width: 390px;
 }
