@@ -29,16 +29,33 @@
 
     <body>
         <div class="container" ng-controller="opaController">
-            <h1>Don't Blow Up the Master!</h1>
-            <div id="countdown-box">
-                <h2 class="countdown"><b>{{countdown}}</b></h2>
+            <div class="row">
+                <div class="col-xs-3"></div>
+                <div class="col-xs-9">
+                    <h1>Don't Blow Up the Master!</h1>                  
+                </div>
             </div>
-            <p>Click the bomb to start countdown</p>
-            <div class="danger-zone">
-                <img src="bomb.png" class="bomb" ng-click="startCountdown()" ng-show="bombExploded == false"/>
-                <img src="explosion.png" class="explosion" ng-show="bombExploded"/>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="kitten-dead-count-message" ng-show="kittensDeadMessage">{{kittensDeadMessage}}</h2>
+                </div>
             </div>
-            <img src="kitten.png" ng-style="style"/>
+
+            <div class="row">
+                <div class="col-xs-3">
+                    <h2 class="countdown">{{countdown}}</h2>
+                    <p>Click the bomb to start countdown</p>
+                </div>
+                <div class="col-xs-9">
+                    <div class="danger-zone" id="dangerZone" ng-click="startCountdown()">
+                        <img src="bomb.png" class="bomb" ng-show="bombExploded == false"/>
+                        <img src="explosion.png" class="explosion" ng-show="bombExploded"/>
+                        <img src="mission-accomplished.png" ng-show="kittenDeadCount == 0" id="mission-accomplished"/>
+                    </div>
+                </div>
+            </div>
+            
+            <img src="kitten.png" ng-repeat="k in kittens" ng-style="k.style"/>
         </div>
     </body>
 </html>

@@ -12,7 +12,7 @@ body {
     background-image: url("cobblestone.jpg");
 }
 h1 {
-    text-align: center;
+    text-align: left;
 }
 p{
     width: 80px;
@@ -23,6 +23,7 @@ p{
 .countdown {
     font-size: 50px;
     color: black;
+    font-weight: bold;
 }
 
 .bomb {
@@ -33,23 +34,32 @@ p{
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;    
+    bottom: 0;
+    z-index: 1;  
 }
 
 .danger-zone {
     height: 250;
     width: 400;
     border: 5px dashed red;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -2;
+    position: relative;
+    
 }
 
 .explosion {
     height: 240px;
     width: 390px;
+}
+
+.kitten-dead-count-message {
+    text-align: center;
+}
+
+#mission-accomplished {
+    height: 200px;
+    width: 600px;
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: -100px;
 }
