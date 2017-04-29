@@ -37,7 +37,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <h2 class="kitten-dead-count-message" ng-show="kittensDeadMessage">{{kittensDeadMessage}}</h2>
+                    <h2 class="master-dead-count-message" ng-show="mastersDeadMessage">{{mastersDeadMessage}}</h2>
                 </div>
             </div>
 
@@ -50,12 +50,12 @@
                     <div class="danger-zone" id="dangerZone" ng-click="startCountdown()">
                         <img src="bomb.png" class="bomb" ng-show="bombExploded == false"/>
                         <img src="explosion.png" class="explosion" ng-show="bombExploded"/>
-                        <img src="mission-accomplished.png" ng-show="kittenDeadCount == 0" id="mission-accomplished"/>
+                        <img src="mission-accomplished.png" ng-show="masterDeadCount == 0" id="mission-accomplished"/>
                     </div>
                 </div>
             </div>
             
-            <img src="kitten.png" ng-repeat="k in kittens" ng-style="k.style"/>
+            <img src="master1.1.png" ng-repeat="k in masters" ng-style="k.style"/>
         </div>
     </body>
 </html>

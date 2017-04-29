@@ -51,7 +51,7 @@ p{
     width: 390px;
 }
 
-.kitten-dead-count-message {
+.master-dead-count-message {
     text-align: center;
 }
 
@@ -62,4 +62,8 @@ p{
     position: absolute;
     top: 0px;
     left: -100px;
+}
+
+.master {
+    height: 200px;
 }

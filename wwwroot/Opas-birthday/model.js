@@ -6,8 +6,8 @@ opaApp.controller("opaController", ["$scope", "$interval", function (scope, inte
     interval(function () {
         tickCounter++;
 
-        scope.kittens.forEach(function (kitten) {
-            kitten.tick(tickCounter);
+        scope.masters.forEach(function (master) {
+            master.tick(tickCounter);
         });
     }, 50);
     
@@ -22,13 +22,14 @@ opaApp.controller("opaController", ["$scope", "$interval", function (scope, inte
         }
     };
 
-    scope.kittens = [];
+    scope.masters = [];
     scope.countdown = 10;
     scope.bombExploded = false;
-    scope.kittenDeadCount = null;
-    scope.kittensDeadMessage = '';
+    scope.masterDeadCount = null;
+    scope.mastersDeadMessage = '';
 
     var countdownTimerId = undefined;
+    var numMasters = 5;    
 
     console.log('started controller');
 
@@ -45,27 +46,27 @@ opaApp.controller("opaController", ["$scope", "$interval", function (scope, inte
         console.log(offset.top);
         console.log(offset.left);
 
-        scope.kittenDeadCount = 0;
+        scope.masterDeadCount = 0;
 
-        scope.kittens.forEach(function (kitten) {
-            if (kitten.style.top > zoneTop &&
-                kitten.style.left > zoneLeft &&
-                kitten.style.top < zoneBottom &&
-                kitten.style.left < zoneRight) {
+        scope.masters.forEach(function (master) {
+            if (master.style.top > zoneTop &&
+                master.style.left > zoneLeft &&
+                master.style.top < zoneBottom &&
+                master.style.left < zoneRight) {
                 
-                kitten.die();
-                scope.kittenDeadCount++;
+                master.die();
+                scope.masterDeadCount++;
             } else {
-                kitten.sleep();
+                master.sleep();
             }
         });
 
-        if(scope.kittenDeadCount == 0) {
-            scope.kittensDeadMessage = 'Success! No kittens were caught in the explosion';
-        } else if(scope.kittenDeadCount == 1) {
-            scope.kittensDeadMessage = 'You failed! ' + scope.kittenDeadCount + ' kitten were caught in the explosion!';
-        } else if(scope.kittenDeadCount > 1) {
-            scope.kittensDeadMessage = 'You failed! ' + scope.kittenDeadCount + ' kittens were caught in the explosion!';
+        if(scope.masterDeadCount == 0) {
+            scope.mastersDeadMessage = 'Success! No masters were caught in the explosion';
+        } else if(scope.masterDeadCount == 1) {
+            scope.mastersDeadMessage = 'You failed! ' + scope.masterDeadCount + ' master was caught in the explosion!';
+        } else if(scope.masterDeadCount > 1) {
+            scope.mastersDeadMessage = 'You failed! ' + scope.masterDeadCount + ' masters were caught in the explosion!';
         }
         
     };
@@ -184,7 +185,7 @@ opaApp.controller("opaController", ["$scope", "$interval", function (scope, inte
 
     var starterFunctions = [randomTopPosition, randomBottomPosition, randomLeftPosition, randomRightPosition];
 
-    var Kitten = function () {
+    var Master = function () {
         var state = {
             activity: 'sleeping',
             velocity: undefined,
@@ -192,7 +193,7 @@ opaApp.controller("opaController", ["$scope", "$interval", function (scope, inte
         };
 
         var _style = {
-            'height': '50px',
+            'height': '100px',
             'top': 0,
             'left': 0,
             'position': 'absolute',
@@ -264,16 +265,15 @@ opaApp.controller("opaController", ["$scope", "$interval", function (scope, inte
         };
     };
 
-    var makeKittens = function () {
-        var numKittens = 10;
-        for(var i = 0; i < numKittens; i++) {
-            var kitten = Kitten();
+    var makeMasters = function () {
+        for(var i = 0; i < numMasters; i++) {
+            var master = Master();
 
-            scope.kittens.push(kitten);
+            scope.masters.push(master);
         }
     };
 
-    makeKittens();
+    makeMasters();
 
     var chooseStarterSide = function () {
         var arrayNum = Math.floor(Math.random() * 4);
@@ -282,22 +282,19 @@ opaApp.controller("opaController", ["$scope", "$interval", function (scope, inte
         return starterFunc();
     };
 
-    for(var i = 0; i < 10; i++) {
-        scope.kittens[i].move(chooseStarterSide());
-    }
 
     interval(function () {
         if(scope.bombExploded == false) {
-            var freeKitten = null;
+            var freeMaster = null;
 
-            scope.kittens.forEach(function (kitten) {
-                if(kitten.isSleeping()) {
-                    freeKitten = kitten;
+            scope.masters.forEach(function (master) {
+                if(master.isSleeping()) {
+                    freeMaster = master;
                 }
             });
-            if(freeKitten != null) {
-                freeKitten.move(chooseStarterSide());
+            if(freeMaster != null) {
+                freeMaster.move(chooseStarterSide());
             }
         }
-    }, 2000);
+    }, 5000);
 }]);
