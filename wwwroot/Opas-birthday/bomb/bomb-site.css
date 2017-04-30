@@ -65,5 +65,9 @@ p{
 }
 
 .master {
-    height: 200px;
+    height: 196px;
+    width: 96px;
+    position: absolute;
+    z-index: -1;
+    display: none;
 }

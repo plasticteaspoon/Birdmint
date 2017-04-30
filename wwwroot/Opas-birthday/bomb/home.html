@@ -1,4 +1,4 @@
-<html lang="en" ng-app="opaApp">
+<html lang="en" ng-app="bombApp">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,7 +9,7 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
 
-        <link rel="stylesheet" href="site.css"/>
+        <link rel="stylesheet" href="bomb-site.css"/>
 
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -24,11 +24,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.min.js"></script>
 
         <!-- Your angularjs model-->
-        <script src="/Opas-birthday/model.js"></script>
+        <script src="bomb-controller.js"></script>
     </head> 
 
     <body>
-        <div class="container" ng-controller="opaController">
+        <div class="container" ng-controller="bombController">
             <div class="row">
                 <div class="col-xs-3"></div>
                 <div class="col-xs-9">
@@ -47,15 +47,21 @@
                     <p>Click the bomb to start countdown</p>
                 </div>
                 <div class="col-xs-9">
-                    <div class="danger-zone" id="dangerZone" ng-click="startCountdown()">
-                        <img src="bomb.png" class="bomb" ng-show="bombExploded == false"/>
+                    <div class="danger-zone" id="dangerZone">
+                        <img src="bomb.png" class="bomb" ng-show="bombExploded == false && countdown != 10" id="bomb"/>
                         <img src="explosion.png" class="explosion" ng-show="bombExploded"/>
                         <img src="mission-accomplished.png" ng-show="masterDeadCount == 0" id="mission-accomplished"/>
                     </div>
                 </div>
             </div>
-            
-            <img src="master1.1.png" ng-repeat="k in masters" ng-style="k.style"/>
+
+            <img src="master1.1.png" 
+                ng-repeat="m in masters" 
+                class="master" 
+                ng-style="{top: m.getTop(), left: m.getLeft(), display: m.getVisible() ? 'block' : 'none'}"/>
+
+            <img src="school-boy+bomb.png" ng-style="schoolBoyStyle" ng-show="countdown == 10" ng-click="startCountdown()" id="schoolBoyBomb"/>
+            <img src="school-boy.png" ng-style="schoolBoyStyle" ng-show="countdown != 10"/>
         </div>
     </body>
 </html>

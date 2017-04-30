@@ -1,7 +1,6 @@
-"use strict";
-var mineApp = angular.module("mineApp", ['ngRightClick']);
+angular.module("mineApp", []);
 
-mineApp.controller("mineController", ["$scope", function (scope) {
+angular.module("mineApp").controller("mineController", ["$scope", function (scope) {
     scope.messages = {
         warning:'',
         success:'',
