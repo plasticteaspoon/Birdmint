@@ -38,10 +38,12 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
         var dangerZone = $("#dangerZone");
         var offset = dangerZone.offset();
 
-        var zoneTop = offset.top;
-        var zoneLeft = offset.left;
-        var zoneBottom = offset.top + 250;
-        var zoneRight = offset.left + 400;
+        var dangerZoneRect = {
+            top: offset.top,
+            left: offset.left,
+            height: 250,
+            width: 400
+        };
 
         console.log(offset.top);
         console.log(offset.left);
@@ -50,10 +52,7 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
 
         scope.masters.forEach(function (master) {
             //evaluates to true if master is inside the danger zone
-            if (master.style.bottom > zoneTop &&
-                master.style.top < zoneBottom &&
-                master.style.right > zoneLeft &&
-                master.style.left < zoneRight) {
+            if (master.isInsideRect(dangerZoneRect)) {
                 
                 master.die();
                 scope.masterDeadCount++;
@@ -345,6 +344,7 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
                 };
             } else {
                 interval.cancel(intervalId2);
+                scope.schoolBoyStyle.display = 'none';
             }
         }, 100);
     };
