@@ -1,48 +1,46 @@
 angular.module("mineApp", ['ngRightClick']);
 
 angular.module("mineApp").controller("mineController", ["$scope", function (scope) {
-    scope.messages = {
-        warning:'',
-        success:'',
-        error:'',
-        clear: function () {
-            this.warning = '';
-            this.success = '';
-            this.error = '';
-        }
-    };
+    var minesPlaced = null;
 
-    var minesPlaced = 0;
-
-    scope.grid = {
-        numRows: 10,
-        numCols: 11,
-        numMines: 10,
-        rows: []
-    };
-
-    for (var i = 0; i < scope.grid.numRows; i++) {
-        var row = {
-            cells: []
+    scope.grid = undefined;
+    
+    scope.startGame = function () {
+        minesPlaced = 0;
+        
+        scope.grid = {
+            numRows: 10,
+            numCols: 11,
+            numMines: 10,
+            rows: []
         };
 
-        for (var j = 0; j < scope.grid.numCols; j++) {
-            row.cells.push({ 
-                mined: false,
-                detonated: false, 
-                open: false, 
-                marked: false, 
-                x: j, 
-                y: i, 
-                numCloseMines: 0
-            });
+        createCells();
+        placeMines();
+        countSurroundingMines();
+    };
+
+    var createCells = function () {
+        for (var i = 0; i < scope.grid.numRows; i++) {
+            var row = {
+                cells: []
+            };
+
+            for (var j = 0; j < scope.grid.numCols; j++) {
+                row.cells.push({ 
+                    mined: false,
+                    detonated: false, 
+                    open: false, 
+                    marked: false, 
+                    x: j, 
+                    y: i, 
+                    numCloseMines: 0
+                });
+            }
+
+            scope.grid.rows.push(row);
         }
-
-        scope.grid.rows.push(row);
-    }
-
-    placeMines();
-    countSurroundingMines();
+    };
 
     scope.cellClicked = function (cell) {
         if(getGameState() == 'playing') {
@@ -220,6 +218,7 @@ angular.module("mineApp").controller("mineController", ["$scope", function (scop
                 }
             });
         });
-
     }
+
+    scope.startGame();
 }]);

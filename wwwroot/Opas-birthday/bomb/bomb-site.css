@@ -83,3 +83,8 @@ p{
 .gameZone {
     position: relative;
 }
+
+.back-button {
+    margin: 50px;
+    margin-left: 0px;
+}

@@ -33,8 +33,10 @@
         <div class="container" ng-controller="mineController">
             <h1>Minesweeper</h1>
 
-            <h2 ng-show="getGameState() == 'won'">Well done! You avoided death by mine explosion</h2>
-            <h2 ng-show="getGameState() == 'lost'">Uh oh! You were blown up!!!</h2>
+            <h2 ng-show="getGameState() == 'won'" class="gameEndedMessage">Well done! You avoided death by mine explosion</h2>
+            <h2 ng-show="getGameState() == 'lost'" class="gameEndedMessage">Uh oh! You were blown up!!!</h2>
+
+            <button ng-click="startGame()" class="btn btn-default pull-right">Restart</button>
 
             <table class="center-block">
                 <tbody>
@@ -56,7 +58,18 @@
                 </tbody>
             </table>
 
-            <a href="/Opas-birthday/home.html">Return to Birthday Page</a>
+            <div class="instructions-background">
+                <h2 class="instructions-title">Instructions</h2>
+                <ul class="instructions">
+                    <li>The aim of the game is to not click on a mine</li>
+                    <li>Click a square to open it</li>
+                    <li>The number on it represents the number of mines surrounding it</li>
+                    <li>Right click a square you think a mine is to mark it</li>
+                </ul>
+
+            </div>
+
+            <a href="/Opas-birthday/home.html" class="btn btn-default">Return to Birthday Page</a>
         </div>
     </body>
 </html>
