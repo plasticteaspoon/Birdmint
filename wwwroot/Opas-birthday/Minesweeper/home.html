@@ -31,16 +31,12 @@
 
     <body>
         <div class="container" ng-controller="mineController">
-            <h1 class="jumbotron">Minesweeper</h1>
-
-            <h2 class="warning" ng-show="messages.warning">{{messages.warning}}</h2>
-            <h2 class="success" ng-show="messages.success">{{messages.success}}</h2>
-            <h2 class="error" ng-show="messages.error">{{messages.error}}</h2>
+            <h1>Minesweeper</h1>
 
             <h2 ng-show="getGameState() == 'won'">Well done! You avoided death by mine explosion</h2>
             <h2 ng-show="getGameState() == 'lost'">Uh oh! You were blown up!!!</h2>
 
-            <table>
+            <table class="center-block">
                 <tbody>
                     <tr  ng-repeat="row in grid.rows">
                         <td ng-repeat="cell in row.cells"

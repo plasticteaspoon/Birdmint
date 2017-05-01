@@ -28,7 +28,7 @@
     </head> 
 
     <body>
-        <div class="container" ng-controller="bombController">
+        <div class="container" ng-controller="bombController" ng-style="gameZoneRect">
             <div class="row">
                 <div class="col-xs-3"></div>
                 <div class="col-xs-9">
@@ -37,6 +37,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
+                    <button ng-click="startGame()" class="restart-button btn btn-default" ng-show="bombExploded">Restart</button>
                     <h2 class="master-dead-count-message" ng-show="mastersDeadMessage">{{mastersDeadMessage}}</h2>
                 </div>
             </div>
@@ -51,6 +52,9 @@
                         <img src="bomb.png" class="bomb" ng-show="bombExploded == false && countdownStarted" id="bomb"/>
                         <img src="explosion.png" class="explosion" ng-show="bombExploded"/>
                         <img src="mission-accomplished.png" ng-show="masterDeadCount == 0" id="mission-accomplished"/>
+                        
+                        <img src="school-boy+bomb.png" class="schoolboy" ng-style="schoolBoyStyle" ng-show="countdownStarted == false" ng-click="startCountdown()" id="schoolBoyBomb"/>
+                        <img src="school-boy.png" class="schoolboy" ng-style="schoolBoyStyle" ng-show="countdownStarted"/>
                     </div>
                 </div>
             </div>
@@ -60,8 +64,8 @@
                 class="master" 
                 ng-style="{top: m.getTop(), left: m.getLeft(), display: m.getVisible() ? 'block' : 'none'}"/>
 
-            <img src="school-boy+bomb.png" ng-style="schoolBoyStyle" ng-show="countdownStarted == false" ng-click="startCountdown()" id="schoolBoyBomb"/>
-            <img src="school-boy.png" ng-style="schoolBoyStyle" ng-show="countdownStarted"/>
+            <img src="ambulance.png" ng-style="ambulanceStyle"/>
+            <img src="master+boy.png" ng-style="masterBoyStyle"/>
         </div>
     </body>
 </html>

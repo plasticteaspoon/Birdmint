@@ -1,13 +1,3 @@
-.jd-warning {
-    color : orange;
-}
-.jd-success {
-    color : green;
-}
-.jd-error {
-    color: red;
-}
-
 .jd-cell {
     margin: 0px;
     border: 1px solid black;
@@ -37,4 +27,21 @@
 }
 td {
     text-align: center;
+}
+
+body {
+    background-image: url("/Opas-birthday/happy-birthday.jpg");
+}
+
+h1 {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 75px;
+}
+
+table {
+    height: 200px;
+    width: 200px;
+    margin: auto;
 }

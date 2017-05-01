@@ -1,9 +1,21 @@
-.warning {
-    color : orange;
+body {
+    background-image: url("happy-birthday.jpg");
 }
-.success {
-    color : green
+
+.present {
+    height: 200px;
+    width: 190;
+    display: block;
 }
-.error {
-    color: red
+
+h1 {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 75px;
+}
+
+p {
+    text-align: center;
+    font-weight: bold;
 }

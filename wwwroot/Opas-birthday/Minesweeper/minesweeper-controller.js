@@ -1,4 +1,4 @@
-angular.module("mineApp", []);
+angular.module("mineApp", ['ngRightClick']);
 
 angular.module("mineApp").controller("mineController", ["$scope", function (scope) {
     scope.messages = {

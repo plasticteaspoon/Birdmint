@@ -1,18 +1,14 @@
-.warning {
-    color : orange;
-}
-.success {
-    color : green;
-}
-.error {
-    color: red;
-}
-
 body {
     background-image: url("cobblestone.jpg");
 }
+
+.gameZone {
+    position: relative;
+}
+
 h1 {
     text-align: left;
+    color: black;
 }
 p{
     width: 80px;
@@ -70,4 +66,16 @@ p{
     position: absolute;
     z-index: -1;
     display: none;
+}
+
+.schoolboy {
+    position: absolute;
+    height: 175px;
+    width: 190px;
+}
+
+.restart-button {
+    position: absolute;
+    top: 20px;
+    left: 750px;
 }

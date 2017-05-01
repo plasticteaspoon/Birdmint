@@ -1,7 +1,75 @@
+'use strict';
+
 angular.module("bombApp", []);
 
 angular.module("bombApp").controller("bombController", ["$scope", "$interval", "$timeout", function (scope, interval, timeout) {
-    var tickCounter = 0;
+    scope.masters = [];
+    scope.countdown = undefined;
+    scope.countdownStarted = undefined;
+    scope.bombExploded = undefined;
+    scope.masterDeadCount = undefined;
+    scope.mastersDeadMessage = undefined;
+    scope.schoolBoyStyle = undefined;
+    scope.ambulanceStyle = undefined;
+
+    var tickCounter = null;
+    var countdownTimerId = undefined;
+    var numMasters = null;
+
+    scope.gameZoneRect = {
+        top: 0,
+        left: 0,
+        height: 380,
+        width: 780
+    };
+
+    scope.dangerZoneRect = {
+        height: 250,
+        width: 400,
+        innit: function () {
+            this.top = (scope.gameZoneRect.height - this.height)/2;
+            this.left = (scope.gameZoneRect.width - this.width)/2;
+
+            return this;
+        }
+    }.innit();
+
+    var schoolBoyHeight = 175;
+    var schoolBoyWidth = 190;
+
+    
+    scope.startGame = function () {
+        tickCounter = 0;
+        countdownTimerId = undefined;
+        numMasters = 5;
+
+        scope.masters = [];
+        scope.countdown = 10;
+        scope.countdownStarted = false;
+        scope.bombExploded = false;
+        scope.masterDeadCount = null;
+        scope.mastersDeadMessage = '';
+        scope.schoolBoyStyle = {
+            'top': 50,
+            'left': -300,
+            'display': 'none'
+        };
+        scope.ambulanceStyle = {
+            'top': 190,
+            'left': 780,
+            'display': 'none',
+            'position': 'absolute'
+        };
+        scope.masterBoyStyle = {
+            'top': 100,
+            'left': 780,
+            'display': 'none',
+            'position': 'absolute'
+        };
+
+        makeMasters();
+        schoolBoyPlaceBomb();
+    };
 
     interval(function () {
         tickCounter++;
@@ -22,38 +90,14 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
         }
     };
 
-    scope.masters = [];
-    scope.countdown = 10;
-    scope.countdownStarted = false;
-    scope.bombExploded = false;
-    scope.masterDeadCount = null;
-    scope.mastersDeadMessage = '';
-
-    var countdownTimerId = undefined;
-    var numMasters = 5;    
-
     console.log('started controller');
 
     var bombExplodedAftermath = function () {
-        console.log('bombExplodedAftermath function is running');
-        var dangerZone = $("#dangerZone");
-        var offset = dangerZone.offset();
-
-        var dangerZoneRect = {
-            top: offset.top,
-            left: offset.left,
-            height: 250,
-            width: 400
-        };
-
-        console.log(offset.top);
-        console.log(offset.left);
-
         scope.masterDeadCount = 0;
 
         scope.masters.forEach(function (master) {
             //evaluates to true if master is inside the danger zone
-            if (master.isInsideRect(dangerZoneRect)) {
+            if (master.isInsideRect(scope.dangerZoneRect)) {
                 
                 master.die();
                 scope.masterDeadCount++;
@@ -66,8 +110,10 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
             scope.mastersDeadMessage = 'Success! No masters were caught in the explosion';
         } else if(scope.masterDeadCount == 1) {
             scope.mastersDeadMessage = 'You failed! ' + scope.masterDeadCount + ' master was caught in the explosion!';
+            callAmbulance();
         } else if(scope.masterDeadCount > 1) {
             scope.mastersDeadMessage = 'You failed! ' + scope.masterDeadCount + ' masters were caught in the explosion!';
+            callAmbulance();
         }
         
     };
@@ -99,7 +145,7 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
 
 
     var randomTopPosition = function () {
-        var x = Math.floor(Math.random() * 750);
+        var x = Math.floor(Math.random() * scope.gameZoneRect.width);
 
         var xVelo = Math.floor((Math.random() * 10) - 5);
         var yVelo = Math.floor((Math.random() * 5) + 2);
@@ -115,14 +161,14 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
     };
 
     var randomBottomPosition = function () {
-        var x = Math.floor((Math.random() * 750) + 0);
+        var x = Math.floor(Math.random() * scope.gameZoneRect.width);
 
         var xVelo = Math.floor((Math.random() * 10) - 5);
         var yVelo = Math.floor((Math.random() * -5) + -2);
 
         return {
             x: x,
-            y: 380,
+            y: scope.gameZoneRect.height,
             velocity: {
                 x: xVelo,
                 y: yVelo
@@ -131,7 +177,7 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
     };
 
     var randomLeftPosition = function () {
-        var y = Math.floor((Math.random() * 380) + 0);
+        var y = Math.floor(Math.random() * scope.gameZoneRect.height);
 
         var xVelo = Math.floor((Math.random() * 5) + 2);
         var yVelo = Math.floor((Math.random() * 10) - 5);
@@ -147,13 +193,13 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
     };
 
     var randomRightPosition = function () {
-       var y = Math.floor((Math.random() * 380) + 0);
+       var y = Math.floor(Math.random() * scope.gameZoneRect.height);
 
         var xVelo = Math.floor((Math.random() * -5) - 2);
         var yVelo = Math.floor((Math.random() * 10) + -5);
 
         return {
-            x: 750,
+            x: scope.gameZoneRect.width,
             y: y,
             velocity: {
                 x: xVelo,
@@ -171,23 +217,24 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
             bounds: {
                 top: 0,
                 left: 0,
-                height: 380,
-                width: 780
+                height: scope.gameZoneRect.height,
+                width: scope.gameZoneRect.width
             }
         };
 
-        var top = 0;
-        var left = 0;
-        var visible = false;
+        var rect = {
+            top: 0,
+            left: 0,
+            height: 196,
+            width: 96,
+            visible: false
+        };
 
         var _move = function (start) {
-            console.log(JSON.stringify(start));
 
-            top = start.y;
-            left = start.x;
-            visible = true;
-            height = 196;
-            width = 96;
+            rect.top = start.y;
+            rect.left = start.x;
+            rect.visible = true;
 
             state.activity = 'moving';
             state.velocity = start.velocity;
@@ -195,7 +242,7 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
 
         var _tick = function (tickCounter) {
             if(state.activity == 'sleeping') {
-                visible = false;                                   
+                rect.visible = false;                                   
                 var dream = function (food) {
                     var catFoodTins = 0;
                     catFoodTins++;
@@ -204,18 +251,20 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
                 //Now go to sleep and dream a pointless dream
                 dream("catfood");
             } else if(state.activity == 'moving') {
-                console.log("State = " + JSON.stringify(state));
                 if (_isInsideRect(state.bounds)) {
 
                     //inside boundaries so move forward
-                    left += state.velocity.x;
-                    top += state.velocity.y;
+                    rect.left += state.velocity.x;
+                    rect.top += state.velocity.y;
                 }  else {
                     state.activity = 'sleeping';
-                    visible = false;
+                    rect.visible = false;
                 }
             } else if(state.activity == 'dead') {
                 //I'm dead. It is so sad. I'm now only little pieces floating around the atmostphere
+                timeout(function () {
+                    rect.visible = false;
+                }, 2000);
             }
         };
 
@@ -235,20 +284,20 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
 
 
         var _getTop = function () {
-            return top;
+            return rect.top;
         };
         var _getLeft = function () {
-            return left;
+            return rect.left;
         };
         var _getVisible = function () {
-            return visible;
+            return rect.visible;
         };
 
         var _isInsideRect = function (bounds) {
-            return left         <= bounds.left + bounds.width &&
-                   left + width >= bounds.left && 
-                   top          <= bounds.top + bounds.height && 
-                   top + height >= bounds.top;
+            return rect.left              <= bounds.left + bounds.width &&
+                   rect.left + rect.width >= bounds.left && 
+                   rect.top               <= bounds.top + bounds.height && 
+                   rect.top + rect.height >= bounds.top;
         };
 
         return {
@@ -272,8 +321,6 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
         }
     };
 
-    makeMasters();
-
     var chooseStarterSide = function () {
         var arrayNum = Math.floor(Math.random() * 4);
         var starterFunc = starterFunctions[arrayNum];
@@ -295,58 +342,57 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
                 freeMaster.move(chooseStarterSide());
             }
         }
-    }, 5000);
-
-    scope.schoolBoyStyle = {};
+    }, 3000);
 
     var schoolBoyPlaceBomb = function () {
-        var bomb = $("#bomb");
-        var offset = bomb.offset();
-
-        var x = -50;
-        var y = offset.top - 100;
-        console.log(offset.top);
-        
-        
+        scope.schoolBoyStyle.display = 'block';
         var intervalId = interval(function () {
-            if(x < offset.left - 100) {                
-                x+=15;
-                scope.schoolBoyStyle = {
-                    'top': y,
-                    'left': x,
-                    'display': 'block',
-                    'position': 'absolute',
-                    'height': '175px'
-                };
+            if(scope.schoolBoyStyle.left < 100) {
+                scope.schoolBoyStyle.left += 15;
             } else {
                 interval.cancel(intervalId);
             }
         }, 100);
         
     };
-    schoolBoyPlaceBomb();
 
     var schoolBoyRunAway = function () {
-        var oldBoy = $("#schoolBoyBomb");
-        var offset = oldBoy.offset();
-
-        var x = offset.left;
-        var y = offset.top;
-        
         var intervalId2 = interval(function () {
-            if(x < 780) {                
-                x += 15;
-                scope.schoolBoyStyle = {
-                    'top': y,
-                    'left': x,
-                    'display': 'block',
-                    'position': 'absolute',
-                    'height': '175px'
-                };
+            if(scope.schoolBoyStyle.left < scope.gameZoneRect.width) {         
+                scope.schoolBoyStyle.left += 15;
             } else {
                 interval.cancel(intervalId2);
                 scope.schoolBoyStyle.display = 'none';
             }
         }, 100);
     };
+
+    var callAmbulance = function () {
+        timeout(function () {
+            scope.ambulanceStyle.display = 'block';
+            var intervalId3 = interval(function () {
+                if(scope.ambulanceStyle.left > -300) {
+                    scope.ambulanceStyle.left -= 10;
+                } else {
+                    interval.cancel(intervalId3);
+                    dragBoy();
+                }
+            }, 50);
+        }, 2000);
+    };
+
+    var dragBoy = function () {
+        timeout(function () {
+            scope.masterBoyStyle.display = 'block';
+            var intervalId4 = interval(function () {
+                if(scope.masterBoyStyle.left > -500) {
+                    scope.masterBoyStyle.left -= 10;
+                } else {
+                    interval.cancel(intervalId4);
+                }
+            }, 50);
+        }, 500);
+    };
+
+    scope.startGame();
 }]);
