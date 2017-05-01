@@ -79,3 +79,7 @@ p{
     top: 20px;
     left: 750px;
 }
+
+.gameZone {
+    position: relative;
+}

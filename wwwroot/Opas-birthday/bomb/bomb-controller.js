@@ -107,12 +107,12 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
         });
 
         if(scope.masterDeadCount == 0) {
-            scope.mastersDeadMessage = 'Success! No masters were caught in the explosion';
+            scope.mastersDeadMessage = 'Phew! No masters were caught in the explosion';
         } else if(scope.masterDeadCount == 1) {
-            scope.mastersDeadMessage = 'You failed! ' + scope.masterDeadCount + ' master was caught in the explosion!';
+            scope.mastersDeadMessage = 'Uh oh! ' + scope.masterDeadCount + ' master was caught in the explosion!';
             callAmbulance();
         } else if(scope.masterDeadCount > 1) {
-            scope.mastersDeadMessage = 'You failed! ' + scope.masterDeadCount + ' masters were caught in the explosion!';
+            scope.mastersDeadMessage = 'Uh oh! ' + scope.masterDeadCount + ' masters were caught in the explosion!';
             callAmbulance();
         }
         
@@ -375,6 +375,7 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
                     scope.ambulanceStyle.left -= 10;
                 } else {
                     interval.cancel(intervalId3);
+                    scope.ambulanceStyle.display = 'none';
                     dragBoy();
                 }
             }, 50);
@@ -389,6 +390,7 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
                     scope.masterBoyStyle.left -= 10;
                 } else {
                     interval.cancel(intervalId4);
+                    scope.masterBoyStyle.display = 'none';
                 }
             }, 50);
         }, 500);
