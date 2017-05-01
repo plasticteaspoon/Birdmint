@@ -48,7 +48,7 @@
                 </div>
                 <div class="col-xs-9">
                     <div class="danger-zone" id="dangerZone">
-                        <img src="bomb.png" class="bomb" ng-show="bombExploded == false && countdown != 10" id="bomb"/>
+                        <img src="bomb.png" class="bomb" ng-show="bombExploded == false && countdownStarted" id="bomb"/>
                         <img src="explosion.png" class="explosion" ng-show="bombExploded"/>
                         <img src="mission-accomplished.png" ng-show="masterDeadCount == 0" id="mission-accomplished"/>
                     </div>
@@ -60,8 +60,8 @@
                 class="master" 
                 ng-style="{top: m.getTop(), left: m.getLeft(), display: m.getVisible() ? 'block' : 'none'}"/>
 
-            <img src="school-boy+bomb.png" ng-style="schoolBoyStyle" ng-show="countdown == 10" ng-click="startCountdown()" id="schoolBoyBomb"/>
-            <img src="school-boy.png" ng-style="schoolBoyStyle" ng-show="countdown != 10"/>
+            <img src="school-boy+bomb.png" ng-style="schoolBoyStyle" ng-show="countdownStarted == false" ng-click="startCountdown()" id="schoolBoyBomb"/>
+            <img src="school-boy.png" ng-style="schoolBoyStyle" ng-show="countdownStarted"/>
         </div>
     </body>
 </html>

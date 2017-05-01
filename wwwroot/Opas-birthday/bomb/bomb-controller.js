@@ -24,6 +24,7 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
 
     scope.masters = [];
     scope.countdown = 10;
+    scope.countdownStarted = false;
     scope.bombExploded = false;
     scope.masterDeadCount = null;
     scope.mastersDeadMessage = '';
@@ -72,7 +73,7 @@ angular.module("bombApp").controller("bombController", ["$scope", "$interval", "
     };
 
     scope.startCountdown = function () {
-        console.log('countdown started');
+        scope.countdownStarted = true;
         schoolBoyRunAway();
         if (countdownTimerId == undefined) {
             countdownTimerId = interval(function () {
