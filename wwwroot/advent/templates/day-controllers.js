@@ -12,7 +12,7 @@ adventApp.controller("riddleController", ["$scope", "adventDate", function (scop
     };
 
     var december = 11;
-    var pageDate = new Date(2016, december, 2, 0, 0, 0);
+    var pageDate = new Date(birdmintVars.getCurrentYear(), december, 2, 0, 0, 0);
     var now = adventDate.now();
     
     scope.showAnswer = false;
