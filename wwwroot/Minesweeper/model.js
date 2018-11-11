@@ -69,11 +69,16 @@ mineApp.controller("mineController", ["$scope", function (scope) {
     };
 
     function placeMines () {
+        //Do we have enough mines?
         while (minesPlaced < scope.grid.numMines) {
+            //We don't
+            //Get random x and y coordinates 
             var randomRow = Math.floor((Math.random() * scope.grid.numRows));
             var randomCol = Math.floor((Math.random() * scope.grid.numCols));
-
+            
+            //Check if already mined
             if (scope.grid.rows[randomRow].cells[randomCol].mined == false) {
+                //PLace mine
                 scope.grid.rows[randomRow].cells[randomCol].mined = true;
                 minesPlaced++;
             }
@@ -127,14 +132,19 @@ mineApp.controller("mineController", ["$scope", function (scope) {
     function getNeighbors (cell) {
         var neighbors = [];
         var neighbor;
-
+        
+        // check 1 up, same row, and 1 down
         for(var i=-1; i<=1; i++) {
+            // check 1 across, same col, and 1 down
             for(var j=-1; j<=1; j++) {
-                neighbor = getCell(cell.y + i, cell.x + j);
                 //a cell isn't its own neighbor. REMEMBER THIS!!!
                 //either in a different collum or a different row. Or both.
-                if(neighbor && (cell.y != i || cell.x != j)) {
-                    neighbors.push(neighbor);
+                if(!(i == 0 && j == 0)) {
+                    neighbor = getCell(cell.y + i, cell.x + j);
+                    
+                    if(neighbor) {
+                        neighbors.push(neighbor);
+                    }
                 }
             }
         }
