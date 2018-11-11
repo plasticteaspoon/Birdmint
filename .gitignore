@@ -7,3 +7,5 @@ books/books.nedb
 */Thumbs.db
 TEMP
 wwwroot/videos/
+server.log
+

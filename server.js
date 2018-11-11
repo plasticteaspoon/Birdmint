@@ -38,7 +38,7 @@ app.post('/api/login', function (request, response) {
 books.addRoutes(app);
 tasks.addRoutes(app);
 
-var serverPort =config.get("serverPort"); 
+var serverPort = config.get("serverPort"); 
 
 app.listen(serverPort, function () {
     console.log('Server started on port ' + serverPort);
